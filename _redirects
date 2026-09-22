@@ -1,20 +1,37 @@
 # ============================================================
-# Konsolidasi duplikat.
-# Router menormalisasi route "/" menjadi "/tentang-kami", sehingga kedua URL
-# menampilkan halaman Beranda yang identik. Tanpa 301 ini Google melihat dua
-# URL dengan konten sama (duplicate content).
+# ATURAN ROUTING CLOUDFLARE PAGES
 #
-# WAJIB berada DI ATAS aturan splat /* — Cloudflare & Netlify memakai aturan
-# PERTAMA yang cocok; kalau ditaruh di bawah splat, aturan ini tidak pernah
-# tereksekusi. Ini menyamakan perilaku dengan blok "redirects" di vercel.json.
+# Aturan ditulis EKSPLISIT per route, bukan sapuan "/*".
+# Alasannya: "/*  /index.html  200" membuat SETIAP URL ngawur
+# (/typo, /file-acak.png) membalas HTTP 200 berisi beranda.
+# Google menyebut itu soft 404 dan bisa mengindeksnya sebagai
+# duplikat beranda. Dengan daftar eksplisit, hanya route yang
+# benar-benar ada yang dilayani; sisanya jatuh ke 404.html
+# dengan status HTTP 404 yang jujur.
+#
+# KALAU MENAMBAH ROUTE BARU DI JS, TAMBAHKAN JUGA DI SINI.
+# Kalau lupa, route baru itu akan 404 saat di-refresh.
 # ============================================================
-/tentang-kami    /    301!
 
-# SPA catch-all — WAJIB untuk router custom di web obeng.html
-# Semua route (/tentang-kami, /paket-service, /layanan-service/service-ac, dst)
-# harus dilayani oleh shell HTML yang sama, karena routing dilakukan client-side
-# lewat History API. Tanpa baris ini, refresh di route mana pun = HTTP 404.
+# ---- Konsolidasi duplikat ----
+# Router menormalisasi "/" menjadi "/tentang-kami", jadi kedua URL
+# menampilkan beranda yang sama persis (duplicate content).
 #
-# File statis yang benar-benar ada (gambar, sitemap.xml, robots.txt) tetap
-# dilayani lebih dulu oleh Pages, jadi aturan ini tidak menimpa aset.
-/*    /index.html    200
+# JANGAN tulis "301!" dengan tanda seru. Tanda ! adalah flag "force"
+# milik Netlify dan TIDAK didukung Cloudflare Pages -- barisnya
+# diabaikan diam-diam tanpa error, dan redirect tidak pernah aktif.
+/tentang-kami                           /    301
+
+# ---- Route SPA (History API, dilayani shell yang sama) ----
+# "/" tidak perlu didaftarkan: index.html memang ada di root.
+/layanan-service                        /index.html    200
+/paket-service                          /index.html    200
+/lokasi                                 /index.html    200
+/layanan-service/service-berkala        /index.html    200
+/layanan-service/perbaikan-kaki-kaki    /index.html    200
+/layanan-service/service-ac             /index.html    200
+/layanan-service/ganti-oli-filter       /index.html    200
+/layanan-service/perbaikan-rem          /index.html    200
+/layanan-service/pemeriksaan-mesin      /index.html    200
+/layanan-service/tune-up-mesin          /index.html    200
+/layanan-service/diagnosa-kendaraan     /index.html    200

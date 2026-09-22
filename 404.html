@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <base href="/">
+  <title>Halaman Tidak Ditemukan — OBENG</title>
+
+  <!-- Halaman error tidak boleh masuk indeks Google. -->
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#141824">
+  <link rel="icon" href="/Logo%20OBENG.jpeg" type="image/jpeg">
+
+  <style>
+    /* Token warna disalin dari :root index.html agar konsisten dengan situs.
+       Sengaja tanpa font eksternal: halaman error harus tampil instan
+       walau koneksi buruk. Inter dipakai kalau sudah ter-cache dari
+       kunjungan sebelumnya, kalau tidak jatuh ke font sistem. */
+    :root {
+      --bg-body: #141824;
+      --bg-card: rgba(38, 46, 65, 0.80);
+      --border-subtle: rgba(255, 255, 255, 0.10);
+      --text-main: #f1f5fb;
+      --text-muted: #a8b8cc;
+      --accent: #f59e0b;
+      --accent-hover: #fbbf24;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px 16px;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-align: center;
+    }
+    .card {
+      max-width: 520px; width: 100%;
+      padding: 44px 32px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 22px;
+      box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.50);
+    }
+    .logo { width: 72px; height: 72px; border-radius: 14px; object-fit: cover; margin: 0 auto 24px; display: block; }
+    .code { font-size: clamp(56px, 14vw, 84px); font-weight: 700; line-height: 1; color: var(--accent); letter-spacing: -0.02em; }
+    h1 { font-size: clamp(20px, 5vw, 26px); font-weight: 600; margin: 12px 0 10px; }
+    p { color: var(--text-muted); font-size: 15px; margin-bottom: 28px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    a.btn {
+      display: inline-block; padding: 13px 26px; border-radius: 10px;
+      font-weight: 600; font-size: 15px; text-decoration: none;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+    .btn-primary { background: var(--accent); color: #1a1f2e; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-ghost { border: 1px solid var(--border-subtle); color: var(--text-main); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img src="/Logo%20OBENG.jpeg" alt="Logo OBENG" class="logo">
+    <div class="code">404</div>
+    <h1>Halaman Tidak Ditemukan</h1>
+    <p>Alamat yang Anda buka tidak tersedia atau sudah dipindahkan. Silakan kembali ke beranda atau lihat daftar layanan kami.</p>
+    <div class="actions">
+      <a href="/" class="btn btn-primary">Kembali ke Beranda</a>
+      <a href="/layanan-service" class="btn btn-ghost">Lihat Layanan</a>
+    </div>
+  </main>
+</body>
+</html>
