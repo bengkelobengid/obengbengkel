@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>OBENG — Orang Bengkel Indonesia | PT. Fortis Fortuna Indo</title>
+  
+  <meta name="description" content="OBENG (Orang Bengkel Indonesia) by PT. Fortis Fortuna Indo — Bengkel perawatan & perbaikan mobil dan motor profesional di Kalimalang, Bekasi. Cepat, Sigap, Beres.">
+  <meta name="keywords" content="bengkel mobil bekasi, bengkel motor, service berkala, ganti oli, tune up, kaki-kaki, service ac mobil, OBENG, PT Fortis Fortuna Indo">
+  <meta name="theme-color" content="#1a1f2e">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="OBENG — Solusi Perawatan & Perbaikan Kendaraan Anda">
+  <meta property="og:description" content="Mekanik profesional, peralatan modern, dan estimasi transparan. Booking service langsung via WhatsApp.">
+  <meta property="og:image" content="Foto Mobil.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM
+       ========================================================================== */
+    :root {
+      --bg-body: #141824;
+      --bg-section-alt: #1a2030;
+      --bg-card: rgba(38, 46, 65, 0.80);
+      --bg-card-hover: rgba(46, 56, 78, 0.92);
+      --bg-input: rgba(22, 28, 42, 0.92);
+
+      --border-subtle: rgba(255, 255, 255, 0.10);
+      --border-medium: rgba(255, 255, 255, 0.18);
+      --border-accent: rgba(245, 158, 11, 0.55);
+
+      --text-main: #f1f5fb;
+      --text-muted: #a8b8cc;
+      --text-faint: #6d7f96;
+
+      --accent: #f59e0b;
+      --accent-hover: #fbbf24;
+      --accent-glow: rgba(245, 158, 11, 0.35);
+      --accent-subtle: rgba(245, 158, 11, 0.13);
+
+      --brand-blue: #3b82f6;
+      --brand-blue-glow: rgba(59, 130, 246, 0.30);
+
+      --success: #22c55e;
+      --danger: #ef4444;
+
+      --font-heading: "Oswald", "Impact", sans-serif;
+      --font-base: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --container-w: 1180px;
+      --header-h: 88px;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --shadow-card: 0 12px 32px -6px rgba(0, 0, 0, 0.40), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+      --shadow-elevated: 0 20px 48px -8px rgba(0, 0, 0, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); overflow-x: hidden; }
+
+    body {
+      font-family: var(--font-base);
+      color: var(--text-main);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      width: 100%;
+      background-color: var(--bg-body);
+      padding-top: var(--header-h);
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; transition: color 0.15s ease; }
+    ul { list-style: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+    input, select, textarea { font: inherit; color: inherit; }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1.15;
+    }
+
+    .container { width: 100%; max-width: var(--container-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ============ ROUTE PAGE CONTAINER ============ */
+    .page-view {
+      display: none;
+      opacity: 0;
+      min-height: calc(100vh - var(--header-h) - 300px);
+    }
+    .page-view.active {
+      display: block;
+      opacity: 1;
+      animation: pageFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes pageFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============ BUTTONS ============ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 26px;
+      min-height: 48px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.94rem;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, #d97706 100%);
+      color: #0b0d13;
+      box-shadow: 0 4px 16px var(--accent-glow);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--accent-hover) 0%, var(--accent) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--accent-glow);
+      color: #0b0d13;
+    }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border-medium);
+      backdrop-filter: blur(8px);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-subtle); }
+    .btn-block { width: 100%; }
+
+    /* ============ HEADER ============ */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      height: var(--header-h);
+      background: rgba(22, 27, 40, 0.90);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    .site-header.scrolled {
+      background: rgba(18, 22, 34, 0.97);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.38);
+    }
+
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; gap: 24px; }
+    .brand { display: flex; align-items: center; flex-shrink: 0; cursor: pointer; }
+
+    .brand-logo-img {
+      height: 64px; width: auto; max-width: 250px;
+      object-fit: contain;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    .brand:hover .brand-logo-img { transform: scale(1.03); filter: drop-shadow(0 0 12px var(--brand-blue-glow)); }
+
+    .main-nav { display: flex; align-items: center; gap: 32px; }
+    .main-nav ul { display: flex; align-items: center; gap: 24px; }
+
+    .nav-link { font-size: 0.92rem; font-weight: 500; color: var(--text-muted); padding: 8px 4px; position: relative; transition: color 0.2s ease; cursor: pointer; }
+    .nav-link::after {
+      content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 2px;
+      background: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform 0.25s ease;
+    }
+    .nav-link:hover { color: var(--text-main); }
+    .nav-link.active { color: var(--text-main); font-weight: 600; }
+    .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
+    .nav-cta { padding: 10px 22px; min-height: 42px; font-size: 0.88rem; }
+
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      width: 44px; height: 44px; border-radius: var(--radius-sm); padding: 10px;
+      background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.40);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .hamburger:hover, .hamburger:focus-visible { background: rgba(255, 255, 255, 0.24); border-color: var(--accent); }
+    .hamburger span { display: block; height: 2.5px; width: 22px; background: #ffffff; margin: 0 auto; border-radius: 1px; transition: transform 0.25s ease, opacity 0.2s ease; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ============ HERO (HALAMAN TENTANG KAMI / HOME) ============ */
+    .hero {
+      position: relative;
+      min-height: 660px;
+      padding: 110px 0 120px;
+      border-bottom: 1px solid var(--border-subtle);
+      overflow: hidden;
+      isolation: isolate;
+      background-color: #0b0f19;
+    }
+
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 42%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(8, 12, 20, 0.78) 0%, rgba(8, 12, 20, 0.44) 52%, rgba(8, 12, 20, 0.15) 100%),
+                  linear-gradient(180deg, transparent 55%, rgba(8, 12, 20, 0.40) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-inner { 
+      display: flex; 
+      align-items: center; 
+      min-height: 420px; 
+      position: relative; 
+      z-index: 2; 
+    }
+    .hero-content { max-width: 720px; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: rgba(245, 158, 11, 0.14); border: 1px solid rgba(245, 158, 11, 0.38);
+      color: var(--accent); font-weight: 700; font-size: 0.80rem; letter-spacing: 0.10em;
+      text-transform: uppercase; padding: 6px 14px; border-radius: 40px; margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.3rem, 4.4vw, 3.6rem); color: #ffffff; margin-bottom: 20px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.65);
+    }
+    .hero-title .text-gradient {
+      background: linear-gradient(135deg, #ffffff 30%, var(--accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      color: rgba(235, 242, 255, 0.92); font-size: 1.05rem; max-width: 52ch;
+      margin-bottom: 32px; line-height: 1.72; text-shadow: 0 1px 10px rgba(0,0,0,0.5);
+    }
+
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+    .hero-actions .btn-outline {
+      color: #ffffff;
+      border-color: rgba(255,255,255,0.8);
+    }
+
+    .hero-points {
+      display: flex; gap: 24px; flex-wrap: wrap;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.20);
+    }
+    .hero-points li { display: flex; align-items: center; gap: 9px; font-size: 0.90rem; color: rgba(220, 232, 255, 0.95); font-weight: 500; }
+    .hero-points i { color: var(--accent); font-size: 0.95rem; }
+
+    /* ============ SECTION HEADERS ============ */
+    .section-head { margin-bottom: 44px; max-width: 65ch; }
+    .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+
+    .section-subtitle {
+      color: var(--accent); font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-head.center .section-subtitle { justify-content: center; }
+    .section-subtitle::before, .section-subtitle::after {
+      content: ""; flex: 1; max-width: 28px; height: 1px; background: var(--accent); opacity: 0.55;
+    }
+    .section-head:not(.center) .section-subtitle::before,
+    .section-head:not(.center) .section-subtitle::after { display: none; }
+
+    .section-head h2 { font-size: clamp(1.9rem, 3.2vw, 2.55rem); margin-bottom: 14px; color: var(--text-main); }
+    .section-head p { color: var(--text-muted); font-size: 1.00rem; line-height: 1.68; }
+
+    /* ============ TENTANG ============ */
+    .about { padding: 96px 0; background: #ffffff; }
+    .about-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
+
+    .about-copy h2 { font-size: clamp(1.9rem, 3vw, 2.4rem); margin-bottom: 20px; }
+    .about-copy p { color: var(--text-muted); font-size: 1.00rem; margin-bottom: 16px; line-height: 1.72; }
+    .about-copy p strong { color: var(--text-main); font-weight: 600; }
+
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .stat-card {
+      background: var(--bg-card); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: 22px 18px;
+      position: relative; overflow: hidden; box-shadow: var(--shadow-card);
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .stat-card:hover { transform: translateY(-4px); border-color: var(--accent); background: var(--bg-card-hover); }
+    .stat-card::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      background: linear-gradient(180deg, var(--accent), #d97706);
+    }
+    .stat-title { font-family: var(--font-heading); font-size: 1.15rem; color: var(--text-main); font-weight: 700; display: flex; align-items: center; gap: 9px; }
+    .stat-title i { color: var(--accent); font-size: 1.1rem; }
+    .stat-desc { color: var(--text-muted); font-size: 0.87rem; line-height: 1.55; }
+
+    /* ============ KENAPA OBENG ============ */
+    .why-obeng { padding: 96px 0; background: var(--bg-section-alt); }
+    .why-obeng-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    .why-obeng-card {
+      background: var(--bg-card); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 28px 24px;
+      box-shadow: var(--shadow-card); position: relative; overflow: hidden;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .why-obeng-card::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      background: linear-gradient(180deg, var(--accent), #d97706);
+      transform: scaleY(0); transform-origin: bottom; transition: transform 0.25s ease;
+    }
+    .why-obeng-card:hover { transform: translateY(-5px); background: var(--bg-card-hover); border-color: var(--border-accent); }
+    .why-obeng-card:hover::before { transform: scaleY(1); }
+
+    .why-obeng-icon {
+      width: 52px; height: 52px; border-radius: var(--radius-sm);
+      background: var(--accent-subtle); color: var(--accent);
+      display: grid; place-items: center; font-size: 1.25rem; margin-bottom: 18px;
+      border: 1px solid rgba(245,158,11,0.20); transition: all 0.25s ease;
+    }
+    .why-obeng-card:hover .why-obeng-icon { background: var(--accent); color: #111; transform: scale(1.05); }
+    .why-obeng-card h3 { font-size: 1.14rem; margin-bottom: 9px; color: var(--text-main); }
+    .why-obeng-card p { color: var(--text-muted); font-size: 0.90rem; line-height: 1.65; }
+
+    .why-obeng-cta {
+      margin-top: 36px; padding: 24px 28px; border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(245,158,11,0.09), rgba(59,130,246,0.07));
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .why-obeng-cta-copy h3 { font-size: 1.22rem; margin-bottom: 6px; }
+    .why-obeng-cta-copy p { color: var(--text-muted); font-size: 0.88rem; }
+
+    /* ============ SERVICES ============ */
+    .services { padding: 96px 0; background: var(--bg-body); }
+    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+    .service-card {
+      background: var(--bg-card); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 22px 20px;
+      display: flex; flex-direction: column; gap: 12px;
+      box-shadow: var(--shadow-card); transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+    .service-card:hover {
+      background: var(--bg-card-hover); transform: translateY(-4px);
+      border-color: var(--border-accent);
+      box-shadow: var(--shadow-elevated), 0 0 22px rgba(245,158,11,0.12);
+    }
+    .service-image {
+      width: 100%; height: 180px; object-fit: cover; display: block; border-radius: 12px; margin-bottom: 16px;
+    }
+    .service-icon {
+      width: 48px; height: 48px; border-radius: var(--radius-sm);
+      background: var(--accent-subtle); color: var(--accent);
+      display: grid; place-items: center; font-size: 1.2rem;
+      transition: background-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .service-card:hover .service-icon { background: var(--accent); color: #111; transform: scale(1.06); }
+    .service-card h3 { font-size: 1.18rem; color: var(--text-main); }
+    .service-card p { color: var(--text-muted); font-size: 0.90rem; flex-grow: 1; line-height: 1.62; }
+
+    .detail-btn {
+      align-self: flex-start; margin-top: auto; font-size: 0.88rem; font-weight: 600;
+      color: var(--accent); display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 0; border-bottom: 1px solid transparent; transition: gap 0.15s ease, border-color 0.15s ease;
+    }
+    .detail-btn:hover { gap: 10px; border-color: var(--accent); }
+
+    /* ============ HOME SERVICE ============ */
+    .home-service {
+      position: relative; padding: 96px 0;
+      background: var(--bg-section-alt);
+      border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);
+      overflow: hidden;
+    }
+    .home-service::before {
+      content: ""; position: absolute; width: 400px; height: 400px; right: -160px; top: -180px;
+      border-radius: 50%; border: 1px solid rgba(245,158,11,0.14);
+      box-shadow: 0 0 0 48px rgba(245,158,11,0.028), 0 0 0 96px rgba(245,158,11,0.018);
+      pointer-events: none;
+    }
+    .home-service-inner { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+    .home-service-copy { position: relative; z-index: 2; }
+    .home-service-copy h2 { font-size: clamp(2.1rem, 3.8vw, 3.1rem); margin-bottom: 16px; }
+    .home-service-lead { color: var(--text-muted); font-size: 1.02rem; line-height: 1.75; max-width: 56ch; margin-bottom: 24px; }
+
+    .home-service-points { display: grid; grid-template-columns: 1fr 1fr; gap: 13px 22px; margin: 26px 0 30px; }
+    .home-service-point { display: flex; align-items: flex-start; gap: 10px; color: var(--text-muted); font-size: 0.90rem; line-height: 1.52; }
+    .home-service-point i { color: var(--accent); margin-top: 4px; flex-shrink: 0; }
+
+    .home-service-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .home-service-note { color: var(--text-faint); font-size: 0.77rem; margin-top: 14px; }
+
+    .home-service-photo {
+      position: relative; min-height: 420px; border-radius: var(--radius-lg);
+      overflow: hidden; border: 1px solid var(--border-medium); background: #0f1219;
+      box-shadow: var(--shadow-elevated), 0 0 40px rgba(245,158,11,0.08);
+    }
+    .home-service-photo img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; display: block; transition: transform 0.55s ease; }
+    .home-service-photo:hover img { transform: scale(1.035); }
+    .home-service-photo-label {
+      position: absolute; left: 22px; bottom: 20px; z-index: 2;
+      display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px;
+      border-radius: 999px; background: rgba(14,18,28,0.80); border: 1px solid rgba(255,255,255,0.16);
+      backdrop-filter: blur(10px); color: #fff; font-size: 0.82rem; font-weight: 600;
+    }
+    .home-service-photo-label i { color: var(--accent); }
+
+    /* ============ PAKET SERVICE ============ */
+    .packages { padding: 96px 0; background: #ffffff; }
+    .packages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+    .package-card {
+      position: relative; background: var(--bg-card);
+      border: 1px solid rgba(245,158,11,0.26); border-radius: var(--radius-md);
+      padding: 28px 22px 24px; overflow: hidden; box-shadow: var(--shadow-card);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .package-card::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    }
+    .package-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: var(--shadow-elevated), 0 0 24px rgba(245,158,11,0.12); }
+
+    .package-number { font-family: var(--font-heading); color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 5px; }
+    .package-card h3 { font-size: 1.50rem; color: var(--text-main); margin-bottom: 8px; }
+    .package-card.featured h3 { color: var(--accent); }
+
+    .package-tag {
+      display: inline-block; color: #111;
+      background: linear-gradient(135deg, var(--accent), #d97706);
+      border-radius: 999px; padding: 4px 12px; font-size: 0.70rem; font-weight: 800; letter-spacing: 0.04em; margin-bottom: 16px;
+    }
+    .package-label { color: var(--accent); font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+
+    .package-list { display: flex; flex-direction: column; gap: 9px; margin-bottom: 20px; }
+    .package-list li { display: flex; align-items: flex-start; gap: 9px; color: var(--text-muted); font-size: 0.87rem; line-height: 1.52; }
+    .package-list i { color: var(--accent); margin-top: 4px; font-size: 0.76rem; flex-shrink: 0; }
+    .package-note { color: var(--text-faint); font-size: 0.78rem; line-height: 1.52; border-top: 1px solid var(--border-subtle); padding-top: 14px; }
+
+    .packages-cta { margin-top: 32px; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; text-align: center; }
+    .packages-cta p { color: var(--text-muted); font-size: 0.90rem; }
+
+    /* ============ LOKASI ============ */
+    .location { padding: 96px 0; background: var(--bg-section-alt); border-top: 1px solid var(--border-subtle); }
+    .location-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
+    .location-info h2 { font-size: clamp(1.9rem, 2.8vw, 2.4rem); margin-bottom: 14px; }
+    .location-lead { color: var(--text-muted); font-size: 1.00rem; margin-bottom: 28px; line-height: 1.70; }
+
+    .location-list { display: flex; flex-direction: column; gap: 18px; margin-bottom: 32px; }
+    .location-item { display: flex; gap: 14px; align-items: flex-start; }
+    .location-item-icon {
+      width: 42px; height: 42px; border-radius: var(--radius-sm);
+      background: var(--bg-card); border: 1px solid var(--border-medium);
+      color: var(--accent); display: grid; place-items: center; font-size: 1.1rem; flex-shrink: 0;
+    }
+    .location-item-text dt { font-weight: 600; font-size: 0.93rem; color: var(--text-main); margin-bottom: 3px; }
+    .location-item-text dd { color: var(--text-muted); font-size: 0.90rem; word-break: break-word; line-height: 1.55; }
+    .location-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .location-map { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-medium); height: 420px; width: 100%; box-shadow: var(--shadow-card); }
+    .location-map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.15) contrast(1.05); }
+
+    /* ============ TESTIMONIALS ============ */
+    .testimonials { padding: 96px 0; background: var(--bg-body); }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+
+    .testimonial-card {
+      background: var(--bg-card); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 28px;
+      display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow-card);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .testimonial-card:hover { transform: translateY(-4px); border-color: var(--border-medium); }
+    .testimonial-card .stars { color: var(--accent); font-size: 0.88rem; display: flex; gap: 3px; }
+    .testimonial-card blockquote { color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; flex-grow: 1; font-style: italic; }
+    .testimonial-card figcaption { display: flex; align-items: center; gap: 14px; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+
+    .avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(42,52,74,0.90); color: var(--accent);
+      border: 1px solid var(--border-medium); display: grid; place-items: center;
+      font-weight: 700; font-size: 0.86rem; flex-shrink: 0;
+    }
+    .testi-meta { display: flex; flex-direction: column; line-height: 1.38; }
+    .testi-name { font-size: 0.94rem; font-weight: 600; color: var(--text-main); }
+    .testi-vehicle { font-size: 0.80rem; color: var(--text-faint); }
+
+    /* ============ FAQ ============ */
+    .faq { padding: 96px 0; background: var(--bg-section-alt); border-top: 1px solid var(--border-subtle); }
+    .faq-list { max-width: 840px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+
+    .faq-item {
+      background: var(--bg-card); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden;
+      box-shadow: var(--shadow-card); transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .faq-item[open] { border-color: var(--border-accent); background: var(--bg-card-hover); }
+
+    .faq-question {
+      list-style: none; cursor: pointer; display: flex; align-items: center;
+      justify-content: space-between; gap: 20px; padding: 20px 22px;
+      color: var(--text-main); font-weight: 600; font-size: 0.96rem;
+    }
+    .faq-question::-webkit-details-marker { display: none; }
+    .faq-question::after {
+      content: "\f078"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+      color: var(--accent); font-size: 0.80rem; flex-shrink: 0; transition: transform 0.2s ease;
+    }
+    .faq-item[open] .faq-question::after { transform: rotate(180deg); }
+    .faq-answer { padding: 16px 22px 20px; color: var(--text-muted); font-size: 0.90rem; line-height: 1.72; border-top: 1px solid var(--border-subtle); }
+
+    /* ============ BOOKING ============ */
+    .booking { padding: 96px 0; background: var(--bg-body); border-top: 1px solid var(--border-subtle); }
+    .booking-inner { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 52px; align-items: start; }
+    .booking-copy h2 { font-size: clamp(1.9rem, 3vw, 2.45rem); margin-bottom: 14px; }
+    .booking-copy p { color: var(--text-muted); font-size: 1.00rem; margin-bottom: 24px; line-height: 1.70; }
+
+    .booking-notes { display: flex; flex-direction: column; gap: 14px; }
+    .booking-notes li { display: flex; align-items: flex-start; gap: 12px; color: var(--text-muted); font-size: 0.93rem; line-height: 1.55; }
+    .booking-notes i { color: var(--success); margin-top: 4px; font-size: 1rem; }
+
+    .booking-form {
+      background: var(--bg-card); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: 34px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px; box-shadow: var(--shadow-elevated);
+    }
+
+    .form-row { display: flex; flex-direction: column; gap: 6px; }
+    .form-row-full { grid-column: 1 / -1; }
+    .form-row label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+
+    .form-row input, .form-row select, .form-row textarea {
+      font-size: 0.94rem; background: var(--bg-input); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm); padding: 12px 15px; color: var(--text-main); width: 100%;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      -webkit-appearance: none; appearance: none;
+    }
+    .form-row select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23a8b8cc' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 13px center; background-size: 18px; padding-right: 38px;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+      outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-subtle);
+    }
+    .form-row textarea { resize: vertical; min-height: 92px; }
+    .form-row.has-error input, .form-row.has-error select, .form-row.has-error textarea { border-color: var(--danger); }
+    .field-error { font-size: 0.79rem; color: var(--danger); min-height: 1.1em; }
+
+    .sunday-warning { display: none; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--accent); margin-top: 4px; }
+    .sunday-warning.show { display: flex; }
+
+    .form-row input[type="date"]::-webkit-calendar-picker-indicator {
+      opacity: 1; cursor: pointer;
+      filter: invert(72%) sepia(93%) saturate(1700%) hue-rotate(359deg) brightness(103%) contrast(103%);
+    }
+
+    /* ============ GALERI SLIDER ============ */
+    .booking-gallery { padding: 96px 0; background: var(--bg-section-alt); border-top: 1px solid var(--border-subtle); }
+    .booking-gallery-wrap { position: relative; max-width: 1040px; margin: 0 auto; }
+
+    .booking-slider {
+      position: relative; overflow: hidden; border-radius: var(--radius-lg);
+      border: 1px solid var(--border-medium); background: #0f1219;
+      box-shadow: var(--shadow-elevated), 0 0 40px rgba(59,130,246,0.09); touch-action: pan-y;
+    }
+    .booking-slides { display: flex; transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
+
+    .booking-slide { flex: 0 0 100%; min-width: 100%; aspect-ratio: 16/7; position: relative; overflow: hidden; background: #141824; }
+    .booking-slide img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .booking-slide:hover img { transform: scale(1.02); }
+    .booking-slide::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(8,10,14,.60), rgba(8,10,14,.10) 65%, rgba(8,10,14,.22));
+      pointer-events: none;
+    }
+    .booking-slide-caption { position: absolute; z-index: 2; left: clamp(22px, 4vw, 50px); bottom: clamp(22px, 4vw, 46px); max-width: 510px; }
+    .booking-slide-caption span { display: inline-block; color: var(--accent); font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 7px; }
+    .booking-slide-caption h3 { font-size: clamp(1.45rem, 2.8vw, 2.3rem); color: #fff; margin-bottom: 5px; }
+    .booking-slide-caption p { color: rgba(255,255,255,.82); font-size: .90rem; }
+
+    .booking-slider-btn {
+      position: absolute; z-index: 4; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(22,27,40,.80); border: 1px solid rgba(255,255,255,.22);
+      color: #fff; display: grid; place-items: center; backdrop-filter: blur(8px); transition: all .2s ease;
+    }
+    .booking-slider-btn:hover { background: var(--accent); color: #111; border-color: var(--accent); transform: translateY(-50%) scale(1.06); }
+    .booking-slider-btn.prev { left: 16px; }
+    .booking-slider-btn.next { right: 16px; }
+
+    .booking-slider-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+    .booking-slider-dot { width: 8px; height: 8px; border-radius: 999px; background: var(--text-faint); transition: all .25s ease; padding: 0; }
+    .booking-slider-dot.active { width: 24px; background: var(--accent); }
+    .booking-gallery-note { margin-top: 12px; text-align: center; color: var(--text-faint); font-size: .77rem; }
+
+    /* ============ FOOTER ============ */
+    .site-footer { background: #000000 !important; border-top: 1px solid #222222; padding: 68px 0 0; }
+    .footer-inner { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 44px; padding-bottom: 48px; }
+
+    .footer-logo-img { height: 60px; width: auto; max-width: 230px; object-fit: contain; margin-bottom: 14px; transition: transform 0.2s ease; }
+    .footer-logo-img:hover { transform: scale(1.03); }
+    .footer-brand p { color: #d1d1d1; font-size: 0.90rem; margin: 12px 0 18px; line-height: 1.62; }
+
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a {
+      width: 40px; height: 40px; border-radius: var(--radius-sm); background: #171717;
+      border: 1px solid #444444; display: grid; place-items: center;
+      color: #ffffff; font-size: 1.1rem; transition: all 0.2s ease;
+    }
+    .footer-social a:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-subtle); transform: translateY(-2px); }
+
+    .footer-col h4 { font-family: var(--font-base); font-size: 0.93rem; font-weight: 700; color: #ffffff; margin-bottom: 18px; letter-spacing: 0.04em; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a { color: #d1d1d1; font-size: 0.90rem; transition: color 0.15s ease; cursor: pointer; }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-col li { color: #d1d1d1; font-size: 0.90rem; display: flex; gap: 10px; align-items: flex-start; line-height: 1.55; }
+    .footer-col li i { color: var(--accent); margin-top: 3px; flex-shrink: 0; }
+
+    .footer-bottom { border-top: 1px solid #333333; padding: 22px 0; text-align: center; background: #000000; }
+    .footer-bottom p { color: #888888; font-size: 0.84rem; }
+
+    /* ============ MODAL ============ */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(8,10,20,0.82); backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center;
+      padding: 20px; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, visibility 0.25s ease; z-index: 900;
+    }
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+    .modal-box {
+      background: #ffffff; border: 1px solid var(--border-medium); border-radius: var(--radius-md);
+      padding: 34px 28px; max-width: 490px; width: 100%; max-height: calc(100vh - 40px);
+      overflow-y: auto; position: relative; transform: translateY(16px);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 24px 60px rgba(0,0,0,0.2);
+    }
+    .modal-overlay.open .modal-box { transform: translateY(0); }
+    .modal-close {
+      position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: var(--radius-sm);
+      display: grid; place-items: center; color: #555555; font-size: 1.1rem;
+      background: rgba(0,0,0,0.06); transition: color 0.15s, background 0.15s;
+    }
+    .modal-close:hover { background: rgba(0,0,0,0.12); color: #000000; }
+    .modal-icon { width: 50px; height: 50px; border-radius: var(--radius-sm); background: var(--accent-subtle); color: var(--accent); display: grid; place-items: center; font-size: 1.35rem; margin-bottom: 16px; }
+    .modal-box h3 { font-size: 1.45rem; margin-bottom: 10px; color: #171717; }
+    .modal-box p { color: #555555; margin-bottom: 18px; font-size: 0.95rem; line-height: 1.62; }
+    .modal-list { display: flex; flex-direction: column; gap: 11px; margin-bottom: 26px; }
+    .modal-list li { display: flex; align-items: flex-start; gap: 10px; color: #444444; font-size: 0.90rem; }
+    .modal-list i { color: var(--accent); margin-top: 4px; font-size: 0.84rem; }
+
+    /* ============ FLOATING & SCROLL ============ */
+    .floating-wa {
+      position: fixed; bottom: 28px; right: 28px; z-index: 450;
+      display: flex; align-items: center; gap: 10px;
+      background: #25d366; color: #fff; padding: 12px 18px; border-radius: 40px;
+      font-weight: 600; font-size: 0.90rem; box-shadow: 0 8px 24px rgba(37,211,102,0.45);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .floating-wa:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 28px rgba(37,211,102,0.55); color: #fff; }
+    .floating-wa i { font-size: 1.25rem; }
+
+    .toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translate(-50%, 150%);
+      background: #ffffff; border: 1px solid rgba(0,0,0,0.15); border-left: 4px solid var(--success);
+      border-radius: var(--radius-sm); padding: 16px 20px; display: flex; align-items: flex-start;
+      gap: 14px; max-width: 410px; width: calc(100% - 36px); box-shadow: 0 16px 36px rgba(0,0,0,0.2);
+      opacity: 0; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease; z-index: 950;
+    }
+    .toast.show { transform: translate(-50%, 0); opacity: 1; }
+    .toast i { color: var(--success); font-size: 1.25rem; margin-top: 2px; }
+    .toast strong { display: block; font-size: 0.93rem; margin-bottom: 2px; color: #171717; }
+    .toast span { color: #555555; font-size: 0.84rem; }
+
+    .scroll-top {
+      position: fixed; bottom: 88px; right: 28px; width: 42px; height: 42px; border-radius: 50%;
+      background: #ffffff; backdrop-filter: blur(8px); border: 1px solid rgba(0,0,0,0.2);
+      color: #171717; display: grid; place-items: center;
+      opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.2s ease; z-index: 400;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .scroll-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    .scroll-top:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ============ REVEAL ============ */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) {
+      .why-obeng-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .packages-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-inner, .location-inner, .booking-inner { grid-template-columns: 1fr; gap: 40px; }
+      .home-service-inner { grid-template-columns: 1fr; gap: 40px; }
+      .home-service-copy { max-width: 760px; }
+      .home-service-photo { max-width: 760px; width: 100%; margin: 0 auto; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 860px) {
+      :root { --header-h: 76px; }
+      .brand-logo-img { height: 52px; max-width: 210px; }
+      .main-nav {
+        position: fixed; top: var(--header-h); left: 0; right: 0;
+        max-height: calc(100vh - var(--header-h)); overflow-y: auto;
+        background: #111111; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+        border-bottom: 1px solid #333333; flex-direction: column; align-items: stretch;
+        gap: 0; padding: 16px 24px 26px; transform: translateY(-10px); opacity: 0; visibility: hidden; transition: all 0.25s ease;
+      }
+      .main-nav.open { opacity: 1; visibility: visible; transform: translateY(0); }
+      .main-nav ul { flex-direction: column; align-items: stretch; gap: 4px; }
+      .nav-link { display: block; padding: 12px 8px; font-size: 1.03rem; color: #ffffff; }
+      .nav-link::after { display: none; }
+      .nav-cta { margin-top: 16px; width: 100%; }
+      .hamburger { display: flex; }
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 0 18px; }
+      .hero { min-height: 600px; padding: 88px 0; }
+      .hero-overlay { background: linear-gradient(180deg, rgba(10,14,22,0.60) 0%, rgba(10,14,22,0.75) 100%); }
+      .hero-inner { min-height: 420px; }
+      .hero-title { font-size: 2.15rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn, .home-service-actions .btn { width: 100%; }
+
+      .about { padding: 64px 0; }
+      .about-stats { grid-template-columns: 1fr; }
+      .why-obeng { padding: 64px 0; }
+      .why-obeng-grid { grid-template-columns: 1fr; }
+      .why-obeng-cta { flex-direction: column; align-items: stretch; }
+      .why-obeng-cta .btn { width: 100%; }
+      .services { padding: 64px 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .home-service { padding: 64px 0; }
+      .home-service-points { grid-template-columns: 1fr; }
+      .home-service-actions { flex-direction: column; align-items: stretch; }
+      .home-service-photo, .home-service-photo img { min-height: 300px; }
+      .packages { padding: 64px 0; }
+      .packages-grid { grid-template-columns: 1fr; }
+      .location { padding: 64px 0; }
+      .location-map { height: 290px; }
+      .location-actions { flex-direction: column; }
+      .location-actions .btn { width: 100%; }
+      .testimonials { padding: 64px 0; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .faq { padding: 64px 0; }
+      .faq-question { padding: 18px; font-size: 0.92rem; }
+      .faq-answer { padding: 14px 18px 18px; }
+      .booking { padding: 64px 0; }
+      .booking-form { grid-template-columns: 1fr; padding: 22px 18px; }
+      .booking-gallery { padding: 64px 0; }
+      .booking-slide { aspect-ratio: 4 / 3; }
+      .booking-slide-caption { left: 18px; right: 18px; bottom: 18px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .floating-wa span { display: none; }
+      .floating-wa { padding: 14px; border-radius: 50%; bottom: 20px; right: 20px; }
+      .scroll-top { bottom: 78px; right: 20px; }
+    }
+
+    @media (max-width: 380px) { .brand-logo-img { height: 46px; } }
+  </style>
+
+  <!-- TEMA PUTIH & HITAM ELEGAN -->
+  <style id="white-black-theme-override">
+    :root {
+      --bg-body: #ffffff;
+      --bg-section-alt: #f4f5f7;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f8fafc;
+      --bg-input: #ffffff;
+      --border-subtle: rgba(0,0,0,.10);
+      --border-medium: rgba(0,0,0,.18);
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --text-faint: #6b7280;
+      --shadow-card: 0 8px 24px rgba(0,0,0,.06);
+      --shadow-elevated: 0 14px 36px rgba(0,0,0,.10);
+    }
+
+    body { background: #ffffff; color: #111827; }
+    .site-header { background: #0f1218; border-bottom-color: #1a1e28; }
+    .site-header.scrolled { background: #090b0f; }
+    .nav-link, .nav-link.active, .nav-link:hover { color: #ffffff; }
+
+    .section-head h2, .about-copy h2, .home-service-copy h2, .location-info h2,
+    .booking-copy h2, .section-head p, .about-copy p, .why-obeng-card h3,
+    .service-card h3, .package-card h3, .stat-title, .location-item-text dt,
+    .faq-question, .modal-box h3 { color: #111827; }
+
+    .about, .packages { background: #ffffff; }
+    .why-obeng, .location, .faq, .booking-gallery { background: #f4f5f7; }
+    .services, .testimonials, .booking { background: #ffffff; }
+
+    .stat-card, .why-obeng-card, .service-card, .package-card,
+    .testimonial-card, .faq-item, .booking-form {
+      background: #ffffff; border-color: rgba(0,0,0,.12); box-shadow: 0 8px 24px rgba(0,0,0,.06);
+    }
+
+    .stat-card:hover, .why-obeng-card:hover, .service-card:hover,
+    .package-card:hover, .faq-item[open] { background: #f8fafc; }
+
+    .form-row input, .form-row select, .form-row textarea {
+      background: #ffffff; color: #111827; border-color: rgba(0,0,0,.18);
+    }
+
+    .home-service { background: #f4f5f7; }
+
+    /* ============ HALAMAN DETAIL LAYANAN ============ */
+    .service-card[data-route] { cursor: pointer; }
+    .sd-hero { padding: 56px 0 56px; background: #f4f5f7; border-bottom: 1px solid var(--border-subtle); }
+    .sd-hero-inner { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
+    .sd-hero-inner.no-media { grid-template-columns: 1fr; }
+    .sd-breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 0.84rem; color: var(--text-faint); margin-bottom: 22px; }
+    .sd-breadcrumb a { color: var(--text-muted); font-weight: 500; }
+    .sd-breadcrumb a:hover { color: var(--accent); }
+    .sd-breadcrumb i { font-size: 0.65rem; }
+    .sd-breadcrumb span { color: var(--text-main); font-weight: 600; }
+    .sd-icon { width: 56px; height: 56px; border-radius: var(--radius-sm); background: var(--accent-subtle); color: var(--accent); display: grid; place-items: center; font-size: 1.4rem; margin-bottom: 18px; }
+    .sd-hero h1 { font-size: clamp(2rem, 4.2vw, 3rem); color: #111827; margin-bottom: 12px; }
+    .sd-tagline { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 28px; max-width: 46ch; }
+    .sd-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .sd-hero-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-elevated); border: 1px solid var(--border-subtle); background: #e5e7eb; }
+
+    .sd-body { padding: 72px 0; background: #ffffff; }
+    .sd-body-inner { max-width: 900px; display: flex; flex-direction: column; gap: 28px; }
+    .sd-intro p { font-size: 1.02rem; line-height: 1.8; color: #374151; margin-bottom: 16px; }
+    .sd-intro p:last-child { margin-bottom: 0; }
+    .sd-card { background: #ffffff; border: 1px solid rgba(0,0,0,.12); border-radius: var(--radius-md); padding: 28px; box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+    .sd-card h2 { font-size: 1.35rem; color: #111827; margin-bottom: 18px; }
+    .sd-checklist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 24px; }
+    .sd-checklist li { display: flex; align-items: flex-start; gap: 10px; color: #374151; font-size: 0.95rem; line-height: 1.55; }
+    .sd-checklist i { color: var(--accent); margin-top: 4px; font-size: 0.9rem; }
+    .sd-steps { display: flex; flex-direction: column; gap: 14px; }
+    .sd-steps li { display: flex; align-items: flex-start; gap: 14px; color: #374151; font-size: 0.95rem; line-height: 1.55; }
+    .sd-step-num { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #111; font-weight: 700; font-size: 0.82rem; display: grid; place-items: center; }
+    .sd-info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .sd-info { background: #f4f5f7; border-radius: var(--radius-md); padding: 24px; border: 1px solid var(--border-subtle); }
+    .sd-info:only-child { grid-column: 1 / -1; }
+    .sd-info h3 { font-size: 1.08rem; color: #111827; margin-bottom: 10px; }
+    .sd-info p { color: #4b5563; font-size: 0.93rem; line-height: 1.72; }
+    .sd-suitable { display: flex; align-items: flex-start; gap: 16px; background: var(--accent-subtle); border-left: 4px solid var(--accent); border-radius: var(--radius-sm); padding: 20px 22px; }
+    .sd-suitable > i { color: var(--accent); font-size: 1.3rem; margin-top: 3px; }
+    .sd-suitable strong { display: block; font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.04em; color: #111827; margin-bottom: 4px; }
+    .sd-suitable p { color: #374151; font-size: 0.95rem; line-height: 1.7; }
+
+    .sd-cta { background: #0f1218; padding: 48px 0; }
+    .sd-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .sd-cta h2 { color: #ffffff; font-size: clamp(1.4rem, 2.6vw, 1.9rem); margin-bottom: 6px; }
+    .sd-cta p { color: #9ca3af; font-size: 0.95rem; max-width: 52ch; }
+
+    .sd-pager { background: #f4f5f7; padding: 32px 0; border-top: 1px solid var(--border-subtle); }
+    .sd-pager-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .sd-pager-link { display: flex; flex-direction: column; gap: 4px; background: #ffffff; border: 1px solid rgba(0,0,0,.12); border-radius: var(--radius-md); padding: 16px 20px; transition: border-color .2s, transform .2s; }
+    .sd-pager-link:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .sd-pager-link span { font-size: 0.8rem; color: var(--text-faint); display: flex; align-items: center; gap: 8px; }
+    .sd-pager-link strong { font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.02em; color: #111827; font-size: 1.02rem; font-weight: 600; }
+    .sd-pager-link.next { text-align: right; }
+    .sd-pager-link.next span { justify-content: flex-end; }
+
+    @media (max-width: 900px) {
+      .sd-hero { padding: 36px 0; }
+      .sd-hero-inner { grid-template-columns: 1fr; gap: 28px; }
+      .sd-hero-media { order: -1; }
+      .sd-body { padding: 48px 0; }
+    }
+    @media (max-width: 640px) {
+      .sd-checklist, .sd-info-grid, .sd-pager-inner { grid-template-columns: 1fr; }
+      .sd-card { padding: 22px 18px; }
+      .sd-cta-inner .btn, .sd-hero-actions .btn { width: 100%; }
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- HEADER / NAVBAR (TETAP TAMPIL DI SETIAP ROUTE/HALAMAN) -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="/tentang-kami" class="brand" data-route="/tentang-kami" aria-label="OBENG Beranda">
+        <img src="foto remove.png" alt="Logo OBENG — PT. Fortis Fortuna Indo" class="brand-logo-img">
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Navigasi Utama">
+        <ul>
+          <li><a href="/tentang-kami" class="nav-link" data-route="/tentang-kami">Tentang Kami</a></li>
+          <li><a href="/layanan-service" class="nav-link" data-route="/layanan-service">Layanan Service</a></li>
+          <li><a href="/paket-service" class="nav-link" data-route="/paket-service">Paket Service</a></li>
+          <li><a href="/lokasi" class="nav-link" data-route="/lokasi">Lokasi</a></li>
+        </ul>
+        <a href="/paket-service#booking" class="btn btn-primary nav-cta" data-route="/paket-service" data-target="booking">Booking Service</a>
+      </nav>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         HALAMAN 1: TENTANG KAMI (/ & /tentang-kami)
+         ========================================================================== -->
+    <div class="page-view" id="page-tentang-kami" data-route="/tentang-kami">
+      
+      <!-- HERO (JUDUL AWAL WEB OBENG) -->
+      <section class="hero" id="beranda">
+        <img src="Foto Mobil.png" alt="Foto Mobil Halaman Utama OBENG" class="hero-bg-img" id="heroBgPhoto">
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-inner">
+          <div class="hero-content reveal">
+            <span class="hero-eyebrow"><i class="fa-solid fa-shield-halved"></i> PT. Fortis Fortuna Indo</span>
+            <h1 class="hero-title">
+              Solusi Perawatan &amp;<br>
+              <span class="text-gradient">Perbaikan Kendaraan Anda</span>
+            </h1>
+            <p class="hero-desc">
+              OBENG menghadirkan layanan perawatan dan perbaikan kendaraan bermotor yang dikerjakan langsung oleh mekanik berpengalaman, baik di bengkel maupun melalui layanan Home Service.
+            </p>
+            <div class="hero-actions">
+              <a href="/paket-service#booking" class="btn btn-primary" data-route="/paket-service" data-target="booking"><i class="fa-brands fa-whatsapp"></i> Booking Service</a>
+              <a href="/layanan-service" class="btn btn-outline" data-route="/layanan-service"><i class="fa-solid fa-screwdriver-wrench"></i> Lihat Layanan</a>
+            </div>
+            <ul class="hero-points">
+              <li><i class="fa-solid fa-circle-check"></i> Mekanik Profesional</li>
+              <li><i class="fa-solid fa-circle-check"></i> Pelayanan Terpercaya</li>
+              <li><i class="fa-solid fa-circle-check"></i> Scanner Modern</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- APA ITU OBENG -->
+      <section class="about" id="tentang">
+        <div class="container about-inner">
+          <div class="about-copy reveal">
+            <span class="section-subtitle">Mengenal Kami</span>
+            <h2>Apa Itu OBENG?</h2>
+            <p><strong>OBENG</strong> adalah singkatan dari <strong>Orang Bengkel</strong>, brand otomotif di bawah naungan <strong>PT. Fortis Fortuna Indo</strong> yang bergerak di bidang perawatan dan perbaikan kendaraan dengan komitmen utama: <strong>Cepat, Sigap, dan Beres</strong>.</p>
+            <p>Kami hadir memberikan solusi perawatan kendaraan yang praktis, transparan, dan tepat sasaran. Setiap keluhan kendaraan dianalisis secara akurat agar Anda mendapatkan hasil terbaik tanpa biaya tersembunyi.</p>
+            <p>Dengan peralatan bengkel berstandar industri dan ketersediaan suku cadang berkualitas, kami siap menangani mobil maupun sepeda motor Anda mulai dari perawatan berkala hingga perbaikan menyeluruh.</p>
+          </div>
+
+          <div class="about-stats reveal">
+            <div class="stat-card">
+              <div class="stat-title"><i class="fa-solid fa-list-check"></i> 8 Layanan Inti</div>
+              <p class="stat-desc">Menyediakan berbagai layanan perawatan dan perbaikan kendaraan</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title"><i class="fa-solid fa-wrench"></i> Mekanik Berpengalaman</div>
+              <p class="stat-desc">Ditangani oleh mekanik yang berpengalaman dan terampil.</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title"><i class="fa-solid fa-toolbox"></i> Peralatan Lengkap</div>
+              <p class="stat-desc">Didukung peralatan modern yang memadai untuk berbagai kebutuhan servis.</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title"><i class="fa-solid fa-gear"></i> Suku Cadang Berkualitas</div>
+              <p class="stat-desc">Menggunakan suku cadang yang terjamin dan sesuai untuk kebutuhan kendaraan.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KENAPA PILIH OBENG -->
+      <section class="why-obeng" id="kenapa-obeng">
+        <div class="container">
+          <div class="section-head center reveal">
+            <span class="section-subtitle">Alasan Memilih Kami</span>
+            <h2>Kenapa Pilih OBENG?</h2>
+            <p>Bukan sekadar memperbaiki kendaraan. Kami membantu Anda memahami kondisi kendaraan, memilih solusi yang tepat, dan mendapatkan proses service yang baik.</p>
+          </div>
+
+          <div class="why-obeng-grid">
+            <article class="why-obeng-card reveal">
+              <div class="why-obeng-icon"><i class="fa-solid fa-user-gear"></i></div>
+              <h3>Mekanik Berpengalaman</h3>
+              <p>Kendaraan ditangani oleh mekanik yang berpengalaman dan terampil sesuai kebutuhan perawatan maupun perbaikan.</p>
+            </article>
+            <article class="why-obeng-card reveal">
+              <div class="why-obeng-icon"><i class="fa-solid fa-microchip"></i></div>
+              <h3>Diagnosa Lebih Tepat</h3>
+              <p>Pemeriksaan didukung peralatan modern agar keluhan kendaraan dapat dianalisis dengan lebih akurat sebelum menentukan tindakan.</p>
+            </article>
+            <article class="why-obeng-card reveal">
+              <div class="why-obeng-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+              <h3>Biaya Lebih Transparan</h3>
+              <p>Kondisi kendaraan dan kebutuhan perbaikan dijelaskan terlebih dahulu sehingga Anda lebih mudah memahami pekerjaan yang akan dilakukan.</p>
+            </article>
+            <article class="why-obeng-card reveal">
+              <div class="why-obeng-icon"><i class="fa-solid fa-toolbox"></i></div>
+              <h3>Peralatan Modern</h3>
+              <p>Didukung peralatan bengkel yang memadai untuk membantu proses pemeriksaan, perawatan, dan perbaikan berbagai kebutuhan kendaraan.</p>
+            </article>
+            <article class="why-obeng-card reveal">
+              <div class="why-obeng-icon"><i class="fa-solid fa-gears"></i></div>
+              <h3>Suku Cadang Berkualitas</h3>
+              <p>Mengutamakan suku cadang yang sesuai dan berkualitas untuk mendukung hasil pengerjaan serta menjaga performa kendaraan.</p>
+            </article>
+            <article class="why-obeng-card reveal">
+              <div class="why-obeng-icon"><i class="fa-solid fa-bolt"></i></div>
+              <h3>Cepat, Sigap, Beres</h3>
+              <p>Setiap pekerjaan diarahkan agar prosesnya praktis, responsif, dan tepat sasaran, dengan komitmen utama OBENG: Cepat, Sigap, Beres.</p>
+            </article>
+          </div>
+
+          <div class="why-obeng-cta reveal">
+            <div class="why-obeng-cta-copy">
+              <h3>Sudah tahu keluhan kendaraan Anda?</h3>
+              <p>Booking service dan konsultasikan kebutuhan kendaraan Anda langsung dengan Admin OBENG.</p>
+            </div>
+            <a href="/paket-service#booking" class="btn btn-primary" data-route="/paket-service" data-target="booking"><i class="fa-brands fa-whatsapp"></i> Booking Service</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- GALERI OBENG -->
+      <section class="booking-gallery" id="galeri-booking">
+        <div class="container">
+          <div class="section-head center reveal">
+            <span class="section-subtitle">Galeri OBENG</span>
+            <h2>KENALI OBENG LEBIH DEKAT</h2>
+            <p>Geser kanan atau kiri untuk melihat foto lainnya.</p>
+          </div>
+
+          <div class="booking-gallery-wrap reveal">
+            <div class="booking-slider" id="bookingSlider" aria-label="Galeri foto OBENG">
+              <div class="booking-slides" id="bookingSlides">
+                <div class="booking-slide">
+                  <img src="Foto Obeng.jpeg" alt="Foto bengkel OBENG 1">
+                  <div class="booking-slide-caption">
+                    <span>Bengkel OBENG</span>
+                    <h3>Cepat • Sigap • Beres</h3>
+                    <p>Percayakan kendaraan Anda kepada mekanik berpengalaman OBENG.</p>
+                  </div>
+                </div>
+                <div class="booking-slide">
+                  <img src="Foto tempat service.png" alt="Foto bengkel OBENG 2">
+                  <div class="booking-slide-caption">
+                    <span>Area Service Obeng</span>
+                    <h3>SERVICE TERPERCAYA</h3>
+                    <p>Memberikan Solusi Terbaik untuk Setiap Masalah Kendaraan.</p>
+                  </div>
+                </div>
+                <div class="booking-slide">
+                  <img src="Foto ruang tunggu.png" alt="Foto bengkel OBENG 3">
+                  <div class="booking-slide-caption">
+                    <span>Ruang Tunggu</span>
+                    <h3>MENUNGGU DENGAN NYAMAN</h3>
+                    <p>Mengutamakan kenyamanan dan kepuasan Anda dalam setiap pelayanan.</p>
+                  </div>
+                </div>
+              </div>
+              <button class="booking-slider-btn prev" id="bookingPrev" type="button" aria-label="Foto sebelumnya"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="booking-slider-btn next" id="bookingNext" type="button" aria-label="Foto berikutnya"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="booking-slider-dots" id="bookingDots" aria-label="Pilih foto"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ==========================================================================
+         HALAMAN 2: LAYANAN SERVICE (/layanan-service)
+         ========================================================================== -->
+    <div class="page-view" id="page-layanan-service" data-route="/layanan-service">
+      
+      <!-- 8 LAYANAN SERVICE -->
+      <section class="services" id="layanan">
+        <div class="container">
+          <div class="section-head center reveal">
+            <span class="section-subtitle">Solusi Komprehensif</span>
+            <h2>Layanan Service Kami</h2>
+            <p>Delapan layanan utama yang paling sering dibutuhkan kendaraan Anda, dikerjakan dengan standar perawatan terpercaya dan suku cadang berkualitas.</p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card reveal" data-route="/layanan-service/service-berkala">
+              <img src="Foto service berkala.png" alt="Service Berkala" class="service-image">
+              <div class="service-icon"><i class="fa-solid fa-calendar-check"></i></div>
+              <h3>Service Berkala</h3>
+              <p>Perawatan berkala terjadwal untuk menjaga performa mesin, efisiensi bahan bakar, dan kenyamanan berkendara harian.</p>
+              <a href="/layanan-service/service-berkala" class="detail-btn" data-route="/layanan-service/service-berkala">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="service-card reveal" data-route="/layanan-service/perbaikan-kaki-kaki">
+              <img src="Foto perbaikan kaki kaki.png" alt="Perbaikan Kaki-Kaki" class="service-image">
+              <div class="service-icon"><i class="fa-solid fa-car-side"></i></div>
+              <h3>Perbaikan Kaki-Kaki</h3>
+              <p>Mengatasi bunyi glodakan, getaran setir, dan ketidakstabilan suspensi (tie rod, ball joint, shockbreaker).</p>
+              <a href="/layanan-service/perbaikan-kaki-kaki" class="detail-btn" data-route="/layanan-service/perbaikan-kaki-kaki">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="service-card reveal" data-route="/layanan-service/service-ac">
+              <img src="Foto service AC.png" alt="Service AC" class="service-image">
+              <div class="service-icon"><i class="fa-solid fa-snowflake"></i></div>
+              <h3>Service AC</h3>
+              <p>Pembersihan evaporator, pengecekan tekanan freon, kompresor, dan sterilisasi kabin agar kembali dingin maksimal.</p>
+              <a href="/layanan-service/service-ac" class="detail-btn" data-route="/layanan-service/service-ac">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="service-card reveal" data-route="/layanan-service/ganti-oli-filter">
+              <img src="Foto ganti Oli.png" alt="Ganti Oli &amp; Filter" class="service-image">
+              <div class="service-icon"><i class="fa-solid fa-oil-can"></i></div>
+              <h3>Ganti Oli &amp; Filter</h3>
+              <p>Pilihan oli original (mineral, semi, full-synthetic) dan filter berkualitas tinggi sesuai spesifikasi pabrikan.</p>
+              <a href="/layanan-service/ganti-oli-filter" class="detail-btn" data-route="/layanan-service/ganti-oli-filter">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="service-card reveal" data-route="/layanan-service/perbaikan-rem">
+              <img src="Foto perbaikan rem.png" alt="Perbaikan Rem" class="service-image">
+              <div class="service-icon"><i class="fa-solid fa-compact-disc"></i></div>
+              <h3>Perbaikan Rem</h3>
+              <p>Penggantian kampas rem, bleeding minyak rem, dan perbaikan piringan cakram demi keamanan pengereman.</p>
+              <a href="/layanan-service/perbaikan-rem" class="detail-btn" data-route="/layanan-service/perbaikan-rem">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="service-card reveal" data-route="/layanan-service/pemeriksaan-mesin">
+              <img src="Foto pemeriksaan .png" alt="Pemeriksaan Mesin" class="service-image">
+              <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
+              <h3>Pemeriksaan Mesin</h3>
+              <p>Deteksi dini rembesan oli, overheat, suara mesin abnormal, serta pengecekan kompresi dan radiator.</p>
+              <a href="/layanan-service/pemeriksaan-mesin" class="detail-btn" data-route="/layanan-service/pemeriksaan-mesin">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="service-card reveal" data-route="/layanan-service/tune-up-mesin">
+              <img src="Foto tune up.png" alt="Tune Up Mesin" class="service-image">
+              <div class="service-icon"><i class="fa-solid fa-sliders"></i></div>
+              <h3>Tune Up Mesin</h3>
+              <p>Pembersihan throttle body, busi, injector, dan ruang bakar agar tarikan lebih enteng serta bertenaga.</p>
+              <a href="/layanan-service/tune-up-mesin" class="detail-btn" data-route="/layanan-service/tune-up-mesin">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="service-card reveal" data-route="/layanan-service/diagnosa-kendaraan">
+              <img src="Foto diagnosis kendaraan.png" alt="Diagnosa Kendaraan" class="service-image">
+              <div class="service-icon"><i class="fa-solid fa-laptop-medical"></i></div>
+              <h3>Diagnosa Kendaraan</h3>
+              <p>Pemeriksaan menyeluruh menggunakan scanner untuk membaca kondisi sistem elektronik kendaraan secara akurat.</p>
+              <a href="/layanan-service/diagnosa-kendaraan" class="detail-btn" data-route="/layanan-service/diagnosa-kendaraan">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOME SERVICE -->
+      <section class="home-service" id="home-service">
+        <div class="container">
+          <div class="home-service-inner">
+            <div class="home-service-copy reveal">
+              <span class="section-subtitle">Layanan OBENG</span>
+              <h2>Home Service</h2>
+              <p class="home-service-lead">Tidak sempat datang ke bengkel? OBENG hadir membantu kebutuhan service kendaraan dari lokasi Anda. Praktis, lebih nyaman, dan tetap ditangani dengan standar kerja yang rapi dan profesional.</p>
+              <div class="home-service-points">
+                <div class="home-service-point"><i class="fa-solid fa-location-dot"></i><span>Mekanik datang ke lokasi yang Anda tentukan.</span></div>
+                <div class="home-service-point"><i class="fa-solid fa-screwdriver-wrench"></i><span>Penanganan disesuaikan dengan kebutuhan kendaraan.</span></div>
+                <div class="home-service-point"><i class="fa-solid fa-clock"></i><span>Lebih praktis tanpa harus membawa kendaraan ke bengkel.</span></div>
+                <div class="home-service-point"><i class="fa-solid fa-circle-check"></i><span>Booking terlebih dahulu agar kebutuhan service dapat dipersiapkan.</span></div>
+              </div>
+              <div class="home-service-actions">
+                <a href="/paket-service#booking" class="btn btn-primary" data-route="/paket-service" data-target="booking"><i class="fa-solid fa-calendar-check"></i> Booking Home Service</a>
+                <a href="/layanan-service#layanan" class="btn btn-outline" data-route="/layanan-service" data-target="layanan">Lihat Layanan</a>
+              </div>
+            </div>
+
+            <div class="home-service-photo reveal">
+              <img src="Foto home service.png" alt="Layanan Home Service OBENG">
+              <div class="home-service-photo-label"><i class="fa-solid fa-house-chimney"></i> Home Service OBENG</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ==========================================================================
+         HALAMAN DETAIL LAYANAN (/layanan-service/nama-layanan)
+         Satu template, isinya diisi otomatis dari data layanan di JavaScript.
+         ========================================================================== -->
+    <div class="page-view" id="page-layanan-detail">
+      <div id="layananDetailRoot"></div>
+    </div>
+
+    <!-- ==========================================================================
+         HALAMAN 3: PAKET SERVICE (/paket-service)
+         ========================================================================== -->
+    <div class="page-view" id="page-paket-service" data-route="/paket-service">
+      
+      <!-- PAKET SERVICE -->
+      <section class="packages" id="paket-service-section">
+        <div class="container">
+          <div class="section-head center reveal">
+            <span class="section-subtitle">Pilihan Perawatan</span>
+            <h2>Paket Service OBENG</h2>
+            <p>Pilih paket perawatan sesuai kebutuhan kendaraan Anda. Setiap pekerjaan tetap disesuaikan dengan kondisi dan tipe kendaraan saat pemeriksaan.</p>
+          </div>
+
+          <div class="packages-grid">
+            <article class="package-card reveal">
+              <div class="package-number">01 — Paket Hemat</div>
+              <h3>Paket Hemat</h3>
+              <div class="package-label">Pekerjaan meliputi:</div>
+              <ul class="package-list">
+                <li><i class="fa-solid fa-check"></i><span>Ganti oli mesin</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Ganti filter oli</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Check standar</span></li>
+              </ul>
+              <p class="package-note">Pilihan praktis untuk perawatan rutin kendaraan.</p>
+            </article>
+
+            <article class="package-card reveal">
+              <div class="package-number">02 — Paket A</div>
+              <h3>Paket A</h3>
+              <div class="package-label">Pekerjaan meliputi:</div>
+              <ul class="package-list">
+                <li><i class="fa-solid fa-check"></i><span>Ganti oli mesin</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Ganti filter oli</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Tune up</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Check standar</span></li>
+              </ul>
+              <p class="package-note">Cocok untuk perawatan rutin sekaligus menjaga performa mesin.</p>
+            </article>
+
+            <article class="package-card reveal">
+              <div class="package-number">03 — Paket B</div>
+              <h3>Paket B</h3>
+              <div class="package-label">Pekerjaan meliputi:</div>
+              <ul class="package-list">
+                <li><i class="fa-solid fa-check"></i><span>Ganti oli mesin</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Ganti filter oli</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Tune up</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Gurah mesin</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Check standar</span></li>
+              </ul>
+              <p class="package-note">Perawatan lebih lengkap untuk membantu mengembalikan performa mesin.</p>
+            </article>
+
+            <article class="package-card featured reveal">
+              <div class="package-number">04 — Paket C</div>
+              <h3>Paket C</h3>
+              <span class="package-tag">PERAWATAN MAKSIMAL!</span>
+              <div class="package-label">Pekerjaan meliputi:</div>
+              <ul class="package-list">
+                <li><i class="fa-solid fa-check"></i><span>Ganti oli mesin</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Ganti filter oli</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Tune up</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Gurah mesin</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Check kopling</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Check kaki-kaki</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Check rem</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Check standar</span></li>
+              </ul>
+              <p class="package-note">Paket paling lengkap untuk pemeriksaan dan perawatan kendaraan secara menyeluruh.</p>
+            </article>
+          </div>
+
+          <div class="packages-cta reveal">
+            <p>Untuk informasi harga, silakan hubungi kami</p>
+            <a href="/paket-service#booking" class="btn btn-primary" data-route="/paket-service" data-target="booking"><i class="fa-brands fa-whatsapp"></i> Konsultasi &amp; Booking</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOOKING SERVICE -->
+      <section class="booking" id="booking">
+        <div class="container booking-inner">
+          <div class="booking-copy reveal">
+            <span class="section-subtitle">Reservasi Mudah &amp; Cepat</span>
+            <h2>Booking Service</h2>
+            <p>Isi data kendaraan di bawah ini. Formulir akan terformat otomatis dan langsung diteruskan ke WhatsApp resmi admin OBENG untuk konfirmasi pengerjaan.</p>
+            <ul class="booking-notes">
+              <li><i class="fa-solid fa-circle-check"></i> Tanpa antre lama saat tiba di bengkel</li>
+              <li><i class="fa-solid fa-circle-check"></i> Estimasi biaya selalu dijelaskan sebelum pengerjaan</li>
+              <li><i class="fa-solid fa-circle-check"></i> Garansi pengerjaan &amp; jaminan part asli</li>
+            </ul>
+          </div>
+
+          <form class="booking-form reveal" id="bookingForm" novalidate>
+            <div class="form-row">
+              <label for="fName">Nama Lengkap <span style="color:var(--accent)">*</span></label>
+              <input type="text" id="fName" name="fName" placeholder="Contoh: Budi Santoso" required>
+              <span class="field-error" id="err-fName"></span>
+            </div>
+            <div class="form-row">
+              <label for="fPhone">Nomor WhatsApp <span style="color:var(--accent)">*</span></label>
+              <input type="tel" id="fPhone" name="fPhone" placeholder="Contoh: 081234567890" required>
+              <span class="field-error" id="err-fPhone"></span>
+            </div>
+            <div class="form-row">
+              <label for="fVehicle">Tipe Kendaraan &amp; Tahun <span style="color:var(--accent)">*</span></label>
+              <input type="text" id="fVehicle" name="fVehicle" placeholder="Contoh: Avanza 2020 / NMAX 2021" required>
+              <span class="field-error" id="err-fVehicle"></span>
+            </div>
+            <div class="form-row">
+              <label for="fService">Pilihan Layanan <span style="color:var(--accent)">*</span></label>
+              <select id="fService" name="fService" required>
+                <option value="" disabled selected>Pilih salah satu layanan...</option>
+                <optgroup label="Paket Service OBENG">
+                  <option value="Paket Hemat">Paket Hemat</option>
+                  <option value="Paket A">Paket A</option>
+                  <option value="Paket B">Paket B</option>
+                  <option value="Paket C — Perawatan Maksimal">Paket C — Perawatan Maksimal</option>
+                </optgroup>
+                <optgroup label="Layanan Service">
+                  <option value="Service Berkala">Service Berkala</option>
+                  <option value="Perbaikan Kaki-Kaki">Perbaikan Kaki-Kaki</option>
+                  <option value="Service AC">Service AC</option>
+                  <option value="Ganti Oli &amp; Filter">Ganti Oli &amp; Filter</option>
+                  <option value="Perbaikan Rem">Perbaikan Rem</option>
+                  <option value="Pemeriksaan Mesin">Pemeriksaan Mesin</option>
+                  <option value="Tune Up Mesin">Tune Up Mesin</option>
+                  <option value="Diagnosa Kendaraan">Diagnosa Kendaraan</option>
+                  <option value="Lainnya / Konsultasi Dulu">Lainnya / Konsultasi Dulu</option>
+                </optgroup>
+              </select>
+              <span class="field-error" id="err-fService"></span>
+            </div>
+            <div class="form-row form-row-full">
+              <label for="fDate">Rencana Tanggal Kunjungan <span style="color:var(--accent)">*</span></label>
+              <input type="date" id="fDate" name="fDate" required>
+              <span class="field-error" id="err-fDate"></span>
+              <div class="sunday-warning" id="sundayWarning">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Booking tersedia setiap hari, Senin – Minggu.</span>
+              </div>
+            </div>
+            <div class="form-row form-row-full">
+              <label for="fComplaint">Gejala / Keluhan Kendaraan (Opsional)</label>
+              <textarea id="fComplaint" name="fComplaint" rows="3" placeholder="Ceritakan kendala Anda (misal: AC kurang dingin, rem bunyi mendecit, tarikan berat, dll)"></textarea>
+            </div>
+            <div class="form-row form-row-full">
+              <button type="submit" class="btn btn-primary btn-block" id="btnSubmitBooking">
+                <i class="fa-brands fa-whatsapp"></i> Kirim Formulir ke WhatsApp
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ==========================================================================
+         HALAMAN 4: LOKASI (/lokasi)
+         ========================================================================== -->
+    <div class="page-view" id="page-lokasi" data-route="/lokasi">
+      
+      <!-- LOKASI BENGKEL -->
+      <section class="location" id="lokasi-section">
+        <div class="container location-inner">
+          <div class="location-info reveal">
+            <span class="section-subtitle">Kunjungi Kami</span>
+            <h2>Lokasi Bengkel</h2>
+            <p class="location-lead">Kunjungi langsung bengkel kami yang berlokasi strategis di kawasan Kalimalang, atau hubungi kami terlebih dahulu untuk mendapatkan informasi lebih lanjut.</p>
+
+            <div class="location-list">
+              <div class="location-item">
+                <div class="location-item-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="location-item-text">
+                  <dt>Alamat Lengkap</dt>
+                  <dd>Jl. Raya Kalimalang, Bintara Jaya, Bekasi Barat</dd>
+                </div>
+              </div>
+              <div class="location-item">
+                <div class="location-item-icon"><i class="fa-solid fa-clock"></i></div>
+                <div class="location-item-text">
+                  <dt>Jam Operasional</dt>
+                  <dd>Senin – Minggu: 08.00 – 20.00 WIB <br><strong style="color:var(--accent)"></strong></dd>
+                </div>
+              </div>
+              <div class="location-item">
+                <div class="location-item-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                <div class="location-item-text">
+                  <dt>Hotline &amp; Booking WhatsApp</dt>
+                  <dd><span id="locationWaDisplay">+62 856-9121-1110</span></dd>
+                </div>
+              </div>
+            </div>
+
+            <div class="location-actions">
+              <a href="https://maps.app.goo.gl/dx7DrJc8dwvsKk9s9" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                <i class="fa-solid fa-diamond-turn-right"></i> Petunjuk Arah
+              </a>
+              <a href="#" id="waLocationBtn" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <div class="location-map reveal">
+            <iframe title="Peta Lokasi Bengkel OBENG Kalimalang"
+              src="https://maps.google.com/maps?q=Jl.+Raya+Kalimalang,+Bintara+Jaya,+Kec.+Bekasi+Barat&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONI -->
+      <section class="testimonials" id="testimoni">
+        <div class="container">
+          <div class="section-head center reveal">
+            <span class="section-subtitle">Pengalaman Nyata</span>
+            <h2>Apa Kata Pelanggan</h2>
+            <p>Kepuasan dan kenyamanan berkendara Anda adalah prioritas utama kami.</p>
+          </div>
+
+          <div class="testimonial-grid">
+            <figure class="testimonial-card reveal">
+              <div class="stars" aria-label="Rating 5 dari 5 Bintang">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <blockquote>"Pengerjaannya rapi dan mekaniknya menjelaskan kondisi mobil dengan jelas sebelum diperbaiki."</blockquote>
+              <figcaption>
+                <div class="avatar">RH</div>
+                <div class="testi-meta">
+                  <span class="testi-name">Rian Hidayat</span>
+                  <span class="testi-vehicle">Toyota Avanza (2018)</span>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure class="testimonial-card reveal">
+              <div class="stars" aria-label="Rating 5 dari 5 Bintang">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <blockquote>"Booking lewat WhatsApp cepat dan responsnya juga oke. Datang ke bengkel langsung dilayani tanpa harus menunggu lama. Motor sekarang jadi enak dipakai."</blockquote>
+              <figcaption>
+                <div class="avatar">SN</div>
+                <div class="testi-meta">
+                  <span class="testi-name">Siti Nuraini</span>
+                  <span class="testi-vehicle">Honda Vario 150</span>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure class="testimonial-card reveal">
+              <div class="stars" aria-label="Rating 5 dari 5 Bintang">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <blockquote>"Diagnosanya cukup jelas. Masalah kelistrikan yang sebelumnya belum ketemu akhirnya bisa ditemukan dan diperbaiki di OBENG."</blockquote>
+              <figcaption>
+                <div class="avatar">DP</div>
+                <div class="testi-meta">
+                  <span class="testi-name">Dimas Prasetyo</span>
+                  <span class="testi-vehicle">Mitsubishi Xpander</span>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="faq" id="faq">
+        <div class="container">
+          <div class="section-head center reveal">
+            <span class="section-subtitle">Pertanyaan Umum</span>
+            <h2>FAQ Bengkel OBENG</h2>
+            <p>Informasi singkat seputar layanan, booking, dan proses service di OBENG.</p>
+          </div>
+
+          <div class="faq-list">
+            <details class="faq-item reveal">
+              <summary class="faq-question">Apakah OBENG melayani mobil dan motor?</summary>
+              <div class="faq-answer">Ya. OBENG melayani perawatan dan perbaikan untuk mobil maupun sepeda motor, mulai dari service berkala, ganti oli, pemeriksaan kendaraan, hingga perbaikan sesuai dengan kebutuhan kendaraan.</div>
+            </details>
+            <details class="faq-item reveal">
+              <summary class="faq-question">Apa saja layanan yang tersedia di OBENG?</summary>
+              <div class="faq-answer">OBENG menyediakan delapan layanan utama, yaitu Service Berkala, Perbaikan Kaki-Kaki, Service AC, Ganti Oli &amp; Filter, Perbaikan Rem, Pemeriksaan Mesin, Tune Up Mesin, dan Diagnosa Kendaraan.</div>
+            </details>
+            <details class="faq-item reveal">
+              <summary class="faq-question">Apakah saya bisa melakukan booking service terlebih dahulu?</summary>
+              <div class="faq-answer">Bisa. Anda dapat mengisi formulir booking pada website dengan data kendaraan, pilihan layanan, tanggal kunjungan, serta keluhan kendaraan jika ada. Setelah formulir dikirim, data akan diteruskan ke WhatsApp admin OBENG untuk dikonfirmasi.</div>
+            </details>
+            <details class="faq-item reveal">
+              <summary class="faq-question">Bagaimana jika saya belum tahu masalah kendaraan saya?</summary>
+              <div class="faq-answer">Tidak masalah. Anda dapat menjelaskan gejala atau keluhan yang dirasakan saat booking. Tim OBENG akan melakukan pemeriksaan untuk membantu mengetahui masalah kendaraan dan kebutuhan perbaikannya.</div>
+            </details>
+            <details class="faq-item reveal">
+              <summary class="faq-question">Apakah saya perlu menjelaskan keluhan kendaraan saat booking?</summary>
+              <div class="faq-answer">Sebaiknya iya, terutama jika kendaraan memiliki gejala tertentu. Anda dapat menuliskan keluhan seperti AC kurang dingin, rem berbunyi, tarikan terasa berat, atau masalah lainnya agar tim memiliki gambaran awal sebelum kendaraan diperiksa.</div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER (TETAP TAMPIL DI SETIAP ROUTE/HALAMAN) -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="/tentang-kami" class="brand" data-route="/tentang-kami" aria-label="OBENG Beranda">
+          <img src="foto remove.png" alt="Logo OBENG — PT. Fortis Fortuna Indo" class="footer-logo-img">
+        </a>
+        <p>Bengkel kendaraan terpercaya dari <strong>PT. Fortis Fortuna Indo</strong>. Hadir dengan mekanik profesional, peralatan modern, dan standar kerja Cepat, Sigap, Beres.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/obeng_orangbengkel?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram OBENG"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@obeng.orangbengkel" target="_blank" rel="noopener noreferrer" aria-label="TikTok OBENG"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Jelajahi Website</h4>
+        <ul>
+          <li><a href="/tentang-kami" data-route="/tentang-kami">Tentang Kami</a></li>
+          <li><a href="/layanan-service" data-route="/layanan-service">Layanan Service</a></li>
+          <li><a href="/paket-service" data-route="/paket-service">Paket Service</a></li>
+          <li><a href="/lokasi" data-route="/lokasi">Lokasi Bengkel</a></li>
+          <li><a href="/lokasi#testimoni" data-route="/lokasi" data-target="testimoni">Testimoni Pelanggan</a></li>
+          <li><a href="/lokasi#faq" data-route="/lokasi" data-target="faq">FAQ</a></li>
+          <li><a href="/paket-service#booking" data-route="/paket-service" data-target="booking">Booking Online</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Kontak Bengkel</h4>
+        <ul>
+          <li><i class="fa-solid fa-location-dot"></i> Jl. Raya Kalimalang, Bintara Jaya, Bekasi Barat</li>
+          <li><i class="fa-solid fa-clock"></i> Senin – Minggu: 08.00 – 20.00 WIB</li>
+          <li><i class="fa-brands fa-whatsapp"></i> <span id="footerWaDisplay">+62 856-9121-1110</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© OBENG (Orang Bengkel Indonesia) — Cepat • Sigap • Beres</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WA -->
+  <a href="#" id="floatingWaBtn" target="_blank" rel="noopener noreferrer" class="floating-wa" aria-label="Chat WhatsApp Admin">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span>Chat Admin</span>
+  </a>
+
+  <!-- TOAST -->
+  <div class="toast" id="bookingToast" role="status" aria-live="polite">
+    <i class="fa-solid fa-circle-check"></i>
+    <div>
+      <strong>Membuka WhatsApp...</strong>
+      <span>Data booking Anda telah disiapkan. Mengalihkan ke WhatsApp OBENG...</span>
+    </div>
+  </div>
+
+  <!-- SCROLL TOP -->
+  <button class="scroll-top" id="scrollTopBtn" aria-label="Kembali ke atas halaman">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const BENGKEL_WHATSAPP = "+62 856-9121-1110";
+
+      function toCleanWaNumber(p) {
+        let c = p.replace(/\D/g,"");
+        if(c.startsWith("0")) c="62"+c.substring(1);
+        else if(c.startsWith("8")) c="62"+c;
+        return c;
+      }
+
+      function formatTanggalIndo(d) {
+        if(!d) return "-";
+        const pts=d.split("-");
+        if(pts.length===3){
+          const o=new Date(pts[0],pts[1]-1,pts[2]);
+          const days=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+          const months=["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+          return `${days[o.getDay()]}, ${pts[2]} ${months[parseInt(pts[1],10)-1]} ${pts[0]}`;
+        }
+        return d;
+      }
+
+      const WA = toCleanWaNumber(BENGKEL_WHATSAPP);
+      const locDisplay=document.getElementById("locationWaDisplay");
+      const footDisplay=document.getElementById("footerWaDisplay");
+      if(locDisplay) locDisplay.textContent=BENGKEL_WHATSAPP;
+      if(footDisplay) footDisplay.textContent=BENGKEL_WHATSAPP;
+
+      const floatingWaBtn=document.getElementById("floatingWaBtn");
+      if(floatingWaBtn) floatingWaBtn.href=`https://wa.me/${WA}?text=${encodeURIComponent("Halo Admin OBENG Kalimalang, saya ingin bertanya dan konsultasi mengenai service kendaraan.")}`;
+
+      const waLocationBtn=document.getElementById("waLocationBtn");
+      if(waLocationBtn) waLocationBtn.href=`https://wa.me/${WA}?text=${encodeURIComponent("Halo Admin OBENG, saya ingin menanyakan rute bengkel dan ketersediaan slot service kendaraan hari ini.")}`;
+
+      /* ==========================================================================
+         ROUTER SISTEM (1 WEBSITE & 1 PROJECT, BEBERAPA ROUTE)
+         Mendukung Clean URL (/tentang-kami) dan Hash URL (#/tentang-kami)
+         ========================================================================== */
+      /* ============ DATA HALAMAN DETAIL LAYANAN ============ */
+      const serviceDetails = {
+  "service-berkala": {
+    "key": "berkala",
+    "icon": "fa-calendar-check",
+    "img": "Foto service berkala.png",
+    "title": "Service Berkala",
+    "tagline": "Perawatan Rutin untuk Menjaga Kendaraan Tetap Prima",
+    "intro": [
+      "Service berkala merupakan perawatan rutin yang dilakukan untuk menjaga kondisi kendaraan tetap optimal, aman, dan nyaman digunakan. Seiring pemakaian, berbagai komponen kendaraan akan mengalami penurunan kondisi meskipun belum menunjukkan kerusakan yang terlihat. Karena itu, pemeriksaan secara berkala penting dilakukan agar kondisi kendaraan dapat diketahui lebih awal.",
+      "Pada layanan ini, mekanik akan melakukan pemeriksaan terhadap beberapa bagian penting kendaraan dan menyesuaikan perawatan dengan kondisi serta kebutuhan kendaraan. Jika ditemukan komponen yang mulai mengalami keausan atau membutuhkan perhatian, pelanggan akan mendapatkan informasi sebelum dilakukan tindakan lebih lanjut."
+    ],
+    "listTitle": "Pemeriksaan yang Dilakukan",
+    "ordered": false,
+    "list": [
+      "Pemeriksaan kondisi mesin dan komponen pendukung",
+      "Pemeriksaan sistem pengereman",
+      "Pemeriksaan kondisi ban dan tekanan angin",
+      "Pemeriksaan cairan kendaraan",
+      "Pemeriksaan sistem kelistrikan",
+      "Pemeriksaan komponen kaki-kaki",
+      "Penggantian oli dan filter jika diperlukan"
+    ],
+    "blocks": [
+      {
+        "title": "Kenapa Service Berkala Penting?",
+        "text": "Service berkala membantu mengetahui kondisi kendaraan sebelum masalah berkembang menjadi kerusakan yang lebih serius. Perawatan yang dilakukan secara rutin juga membantu menjaga performa kendaraan dan memberikan rasa lebih nyaman saat digunakan untuk aktivitas sehari-hari."
+      }
+    ],
+    "suitable": "Kendaraan yang digunakan setiap hari, kendaraan yang sudah mencapai jadwal service, atau pemilik kendaraan yang ingin menjaga kondisi mobil tetap terawat."
+  },
+  "perbaikan-kaki-kaki": {
+    "key": "kaki-kaki",
+    "icon": "fa-car-side",
+    "img": "Foto perbaikan kaki kaki.png",
+    "title": "Perbaikan Kaki-Kaki",
+    "tagline": "Mengembalikan Kenyamanan dan Kestabilan Kendaraan",
+    "intro": [
+      "Kaki-kaki merupakan bagian kendaraan yang berhubungan langsung dengan kenyamanan, kestabilan, dan pengendalian saat berkendara. Penggunaan kendaraan di jalan yang tidak rata, lubang, maupun kondisi jalan yang berat dapat membuat komponen kaki-kaki mengalami keausan secara bertahap.",
+      "Melalui layanan perbaikan kaki-kaki, mekanik akan melakukan pemeriksaan untuk mengetahui bagian mana yang mengalami masalah. Pemeriksaan dilakukan pada komponen yang berkaitan dengan sistem suspensi dan kemudi sebelum menentukan tindakan yang diperlukan."
+    ],
+    "listTitle": "Komponen yang Diperiksa",
+    "ordered": false,
+    "list": [
+      "Shockbreaker",
+      "Ball joint",
+      "Tie rod",
+      "Bushing",
+      "Komponen suspensi",
+      "Komponen kemudi",
+      "Kondisi roda dan bagian pendukung lainnya"
+    ],
+    "blocks": [
+      {
+        "title": "Tanda Kaki-Kaki Mulai Bermasalah",
+        "text": "Beberapa tanda yang sering muncul antara lain suara glodakan atau ketukan saat melewati jalan tidak rata, setir terasa bergetar, kendaraan terasa kurang stabil, atau muncul rasa tidak nyaman ketika kendaraan melewati jalan berlubang."
+      },
+      {
+        "title": "Kenapa Perlu Segera Diperiksa?",
+        "text": "Komponen kaki-kaki yang mengalami masalah dapat memengaruhi kenyamanan dan pengendalian kendaraan. Dengan pemeriksaan lebih awal, kondisi komponen dapat diketahui dan tindakan perbaikan dapat dilakukan sesuai kebutuhan."
+      }
+    ],
+    "suitable": "Kendaraan yang sering melewati jalan rusak, muncul bunyi dari bagian bawah kendaraan, atau terasa kurang stabil saat dikendarai."
+  },
+  "service-ac": {
+    "key": "ac",
+    "icon": "fa-snowflake",
+    "img": "Foto service AC.png",
+    "title": "Service AC",
+    "tagline": "Menjaga Kabin Tetap Dingin dan Nyaman",
+    "intro": [
+      "AC menjadi salah satu bagian penting untuk menjaga kenyamanan selama berkendara, terutama ketika kendaraan digunakan dalam aktivitas sehari-hari. Jika AC mulai kurang dingin, hembusan udara melemah, atau muncul bau yang tidak nyaman, kondisi sistem AC sebaiknya segera diperiksa.",
+      "Layanan service AC OBENG dilakukan untuk memeriksa dan merawat sistem pendingin kendaraan secara menyeluruh. Mekanik akan melihat kondisi komponen AC dan mencari penyebab apabila terdapat gangguan pada sistem pendinginan."
+    ],
+    "listTitle": "Pemeriksaan dan Perawatan",
+    "ordered": false,
+    "list": [
+      "Pembersihan evaporator",
+      "Pemeriksaan tekanan freon",
+      "Pemeriksaan kondisi kompresor",
+      "Pemeriksaan filter kabin",
+      "Pemeriksaan sirkulasi udara",
+      "Pemeriksaan sistem pendingin AC",
+      "Pemeriksaan kondisi komponen pendukung"
+    ],
+    "blocks": [
+      {
+        "title": "Kapan AC Perlu Diservis?",
+        "text": "AC sebaiknya diperiksa apabila udara yang keluar terasa kurang dingin, membutuhkan waktu lama untuk mendinginkan kabin, hembusan udara terasa lemah, muncul bau tidak sedap, atau suhu AC tidak stabil."
+      },
+      {
+        "title": "Manfaat Service AC",
+        "text": "Perawatan secara berkala membantu menjaga sistem AC tetap bekerja dengan baik dan membuat udara di dalam kabin terasa lebih nyaman. Pemeriksaan juga dapat membantu menemukan masalah sebelum gangguan berkembang menjadi kerusakan pada komponen yang lebih besar."
+      }
+    ],
+    "suitable": "Kendaraan dengan AC kurang dingin, muncul bau dari AC, atau sudah lama tidak melakukan perawatan sistem AC."
+  },
+  "ganti-oli-filter": {
+    "key": "oli",
+    "icon": "fa-oil-can",
+    "img": "Foto ganti Oli.png",
+    "title": "Ganti Oli & Filter",
+    "tagline": "Perawatan Dasar yang Penting untuk Menjaga Mesin",
+    "intro": [
+      "Oli memiliki peran penting dalam menjaga komponen mesin tetap terlumasi selama kendaraan digunakan. Seiring waktu dan pemakaian, kualitas oli dapat menurun dan kemampuan pelumasannya tidak lagi optimal. Karena itu, penggantian oli secara rutin menjadi bagian penting dari perawatan kendaraan.",
+      "OBENG menyediakan pilihan oli yang dapat disesuaikan dengan kebutuhan dan spesifikasi kendaraan, mulai dari mineral, semi-synthetic, hingga full-synthetic. Selain oli, kondisi filter juga diperiksa agar proses penyaringan kotoran pada sistem tetap berjalan dengan baik."
+    ],
+    "listTitle": "Layanan yang Dikerjakan",
+    "ordered": false,
+    "list": [
+      "Penggantian oli mesin",
+      "Penggantian filter oli",
+      "Pemeriksaan kondisi oli",
+      "Pemeriksaan kemungkinan kebocoran",
+      "Pemeriksaan kondisi komponen terkait",
+      "Penyesuaian jenis oli dengan kebutuhan kendaraan"
+    ],
+    "blocks": [
+      {
+        "title": "Kenapa Oli Harus Diganti?",
+        "text": "Oli yang sudah digunakan dalam waktu tertentu dapat mengalami penurunan kualitas dan tercampur dengan kotoran dari proses kerja mesin. Penggantian secara rutin membantu menjaga pelumasan komponen mesin dan mendukung kinerja mesin tetap optimal."
+      },
+      {
+        "title": "Pilihan Oli",
+        "text": "Pelanggan dapat memilih jenis oli sesuai dengan spesifikasi kendaraan dan kebutuhan penggunaan. Mekanik juga dapat membantu memberikan informasi mengenai jenis oli yang sesuai untuk kendaraan."
+      }
+    ],
+    "suitable": "Kendaraan yang sudah mencapai jadwal penggantian oli atau pemilik kendaraan yang ingin melakukan perawatan rutin mesin."
+  },
+  "perbaikan-rem": {
+    "key": "rem",
+    "icon": "fa-compact-disc",
+    "img": "Foto perbaikan rem.png",
+    "title": "Perbaikan Rem",
+    "tagline": "Menjaga Sistem Pengereman Tetap Responsif",
+    "intro": [
+      "Rem merupakan salah satu sistem terpenting dalam kendaraan karena berfungsi untuk mengurangi kecepatan dan menghentikan kendaraan. Kondisi sistem pengereman perlu diperhatikan karena komponen seperti kampas dan cakram akan mengalami keausan seiring pemakaian.",
+      "Pada layanan perbaikan rem, mekanik akan memeriksa kondisi sistem pengereman untuk mengetahui apakah terdapat komponen yang aus, rusak, atau membutuhkan perawatan. Tindakan selanjutnya dilakukan berdasarkan hasil pemeriksaan kendaraan."
+    ],
+    "listTitle": "Pemeriksaan Meliputi",
+    "ordered": false,
+    "list": [
+      "Kondisi kampas rem",
+      "Kondisi cakram rem",
+      "Kondisi minyak rem",
+      "Sistem pengereman",
+      "Komponen pendukung rem",
+      "Respons pengereman kendaraan"
+    ],
+    "blocks": [
+      {
+        "title": "Tanda Rem Perlu Diperiksa",
+        "text": "Perhatikan jika muncul suara berdecit atau bunyi tidak normal ketika mengerem, pedal rem terasa berbeda dari biasanya, kendaraan membutuhkan jarak lebih panjang untuk berhenti, atau setir terasa bergetar saat melakukan pengereman."
+      },
+      {
+        "title": "Pentingnya Perawatan Rem",
+        "text": "Sistem pengereman yang terawat membantu menjaga respons kendaraan saat melakukan pengereman. Pemeriksaan secara berkala juga dapat membantu mengetahui kondisi kampas dan komponen lainnya sebelum mengalami keausan lebih lanjut."
+      }
+    ],
+    "suitable": "Kendaraan dengan rem berbunyi, pedal rem terasa tidak normal, atau kendaraan yang sudah lama tidak melakukan pemeriksaan sistem pengereman."
+  },
+  "pemeriksaan-mesin": {
+    "key": "mesin",
+    "icon": "fa-gears",
+    "img": "Foto pemeriksaan .png",
+    "title": "Pemeriksaan Mesin",
+    "tagline": "Mengetahui Kondisi Mesin Secara Lebih Menyeluruh",
+    "intro": [
+      "Mesin merupakan salah satu bagian utama kendaraan yang membutuhkan pemeriksaan secara rutin. Penurunan performa mesin dapat disebabkan oleh berbagai hal, mulai dari komponen yang mengalami keausan, kebocoran, masalah pendinginan, hingga gangguan pada bagian tertentu.",
+      "Layanan pemeriksaan mesin dilakukan untuk membantu menemukan sumber masalah berdasarkan kondisi kendaraan. Mekanik akan melakukan pemeriksaan terhadap bagian-bagian yang berkaitan dengan performa dan kerja mesin."
+    ],
+    "listTitle": "Pemeriksaan Meliputi",
+    "ordered": false,
+    "list": [
+      "Kondisi mesin",
+      "Potensi kebocoran oli",
+      "Sistem pendinginan",
+      "Kondisi radiator",
+      "Suhu kerja mesin",
+      "Suara dan getaran mesin",
+      "Kondisi komponen pendukung"
+    ],
+    "blocks": [
+      {
+        "title": "Kapan Mesin Perlu Diperiksa?",
+        "text": "Pemeriksaan disarankan ketika mesin terasa kurang bertenaga, muncul suara yang tidak biasa, suhu mesin meningkat, terdapat indikasi kebocoran, atau performa kendaraan mengalami perubahan."
+      },
+      {
+        "title": "Tujuan Pemeriksaan",
+        "text": "Dengan pemeriksaan yang dilakukan lebih awal, masalah pada kendaraan dapat diketahui dan ditindaklanjuti sesuai kondisi yang ditemukan. Hal ini juga membantu pemilik kendaraan memahami bagian mana yang membutuhkan perhatian."
+      }
+    ],
+    "suitable": "Kendaraan yang mengalami penurunan performa, muncul suara tidak normal, atau menunjukkan tanda-tanda gangguan pada mesin."
+  },
+  "tune-up-mesin": {
+    "key": "tuneup",
+    "icon": "fa-sliders",
+    "img": "Foto tune up.png",
+    "title": "Tune Up Mesin",
+    "tagline": "Mengoptimalkan Kembali Performa Mesin",
+    "intro": [
+      "Tune up merupakan perawatan yang berfokus pada beberapa komponen yang berperan dalam proses kerja dan pembakaran mesin. Seiring pemakaian kendaraan, kotoran dapat menumpuk pada komponen tertentu sehingga dapat memengaruhi respons dan performa mesin.",
+      "Melalui tune up, mekanik melakukan pemeriksaan dan pembersihan pada komponen yang membutuhkan perawatan. Tindakan disesuaikan dengan kondisi kendaraan sehingga tidak semua komponen harus mendapatkan perlakuan yang sama."
+    ],
+    "listTitle": "Bagian yang Diperiksa atau Dirawat",
+    "ordered": false,
+    "list": [
+      "Throttle body",
+      "Injector",
+      "Busi",
+      "Ruang bakar",
+      "Sistem pendukung pembakaran",
+      "Komponen terkait performa mesin"
+    ],
+    "blocks": [
+      {
+        "title": "Tanda Kendaraan Membutuhkan Tune Up",
+        "text": "Kendaraan dapat membutuhkan tune up ketika tarikan terasa berat, mesin kurang responsif, idle terasa tidak stabil, konsumsi bahan bakar berubah, atau performa kendaraan terasa menurun dibandingkan biasanya."
+      },
+      {
+        "title": "Manfaat Tune Up",
+        "text": "Perawatan ini membantu menjaga proses kerja mesin tetap optimal dan mendukung respons kendaraan agar lebih baik. Tune up juga dapat menjadi bagian dari perawatan rutin untuk menjaga kondisi mesin dalam jangka panjang."
+      }
+    ],
+    "suitable": "Kendaraan yang terasa kurang bertenaga, tarikan berat, mesin kurang responsif, atau sudah lama tidak mendapatkan perawatan mesin."
+  },
+  "diagnosa-kendaraan": {
+    "key": "diagnosa",
+    "icon": "fa-laptop-medical",
+    "img": "Foto diagnosis kendaraan.png",
+    "title": "Diagnosa Kendaraan",
+    "tagline": "Menemukan Sumber Masalah dengan Teknologi Diagnostik",
+    "intro": [
+      "Tidak semua masalah kendaraan dapat diketahui hanya melalui pemeriksaan secara visual. Pada kendaraan modern, berbagai sistem elektronik saling terhubung dan dapat menyimpan informasi ketika terjadi gangguan. Karena itu, pemeriksaan menggunakan scanner dapat membantu teknisi mendapatkan informasi tambahan mengenai kondisi kendaraan.",
+      "Layanan diagnosa kendaraan dilakukan dengan menggunakan perangkat scanner untuk membaca sistem elektronik dan kode error yang tersimpan pada kendaraan. Hasil pemeriksaan kemudian digunakan sebagai salah satu dasar untuk menentukan pemeriksaan lebih lanjut."
+    ],
+    "listTitle": "Proses Diagnosa",
+    "ordered": true,
+    "list": [
+      "Kendaraan diperiksa oleh mekanik.",
+      "Scanner dihubungkan ke sistem kendaraan.",
+      "Sistem elektronik dan kode error dibaca.",
+      "Hasil scanning dianalisis.",
+      "Mekanik memberikan informasi mengenai bagian yang perlu diperiksa lebih lanjut.",
+      "Tindakan perbaikan ditentukan berdasarkan hasil pemeriksaan."
+    ],
+    "blocks": [
+      {
+        "title": "Kapan Diagnosa Diperlukan?",
+        "text": "Diagnosa dapat dilakukan ketika lampu indikator kendaraan menyala, muncul gangguan elektronik, performa kendaraan berubah secara tiba-tiba, atau terdapat masalah yang sulit diketahui penyebabnya melalui pemeriksaan biasa."
+      },
+      {
+        "title": "Manfaat Diagnosa",
+        "text": "Pemeriksaan menggunakan scanner membantu memberikan informasi yang lebih terarah mengenai kondisi sistem elektronik kendaraan. Dengan begitu, mekanik dapat melanjutkan pemeriksaan pada bagian yang memiliki indikasi masalah."
+      }
+    ],
+    "suitable": "Kendaraan yang mengalami gangguan elektronik, lampu indikator menyala, atau memiliki masalah yang belum diketahui sumbernya."
+  }
+};
+      const serviceSlugs = Object.keys(serviceDetails);
+
+      const escHtml = (t) => String(t).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+      function renderServiceDetail(route){
+        const root = document.getElementById("layananDetailRoot");
+        if(!root) return;
+        const slug = route.split("/")[2];
+        const d = serviceDetails[slug];
+        if(!d) return;
+        const i = serviceSlugs.indexOf(slug);
+        const prev = serviceDetails[serviceSlugs[(i - 1 + serviceSlugs.length) % serviceSlugs.length]];
+        const next = serviceDetails[serviceSlugs[(i + 1) % serviceSlugs.length]];
+        const prevSlug = serviceSlugs[(i - 1 + serviceSlugs.length) % serviceSlugs.length];
+        const nextSlug = serviceSlugs[(i + 1) % serviceSlugs.length];
+
+        const listHtml = d.ordered
+          ? `<ol class="sd-steps">${d.list.map((t, n) => `<li><span class="sd-step-num">${n + 1}</span><span>${escHtml(t)}</span></li>`).join("")}</ol>`
+          : `<ul class="sd-checklist">${d.list.map(t => `<li><i class="fa-solid fa-circle-check"></i><span>${escHtml(t)}</span></li>`).join("")}</ul>`;
+
+        root.innerHTML = `
+          <section class="sd-hero">
+            <div class="container sd-hero-inner">
+              <div class="sd-hero-copy">
+                <nav class="sd-breadcrumb" aria-label="Breadcrumb">
+                  <a href="/layanan-service#layanan" data-route="/layanan-service" data-target="layanan">Layanan Service</a>
+                  <i class="fa-solid fa-chevron-right"></i>
+                  <span>${escHtml(d.title)}</span>
+                </nav>
+                <div class="sd-icon"><i class="fa-solid ${d.icon}"></i></div>
+                <h1>${escHtml(d.title)}</h1>
+                <p class="sd-tagline">${escHtml(d.tagline)}</p>
+                <div class="sd-hero-actions">
+                  <a href="/paket-service#booking" class="btn btn-primary" data-route="/paket-service" data-target="booking"><i class="fa-solid fa-calendar-check"></i> Booking Layanan Ini</a>
+                  <a href="/layanan-service#layanan" class="btn btn-outline" data-route="/layanan-service" data-target="layanan"><i class="fa-solid fa-arrow-left"></i> Semua Layanan</a>
+                </div>
+              </div>
+              <div class="sd-hero-media">
+                <img src="${escHtml(d.img)}" alt="${escHtml(d.title)}" onerror="this.closest('.sd-hero-inner').classList.add('no-media'); this.parentElement.remove();">
+              </div>
+            </div>
+          </section>
+
+          <section class="sd-body">
+            <div class="container sd-body-inner">
+              <div class="sd-intro">
+                ${d.intro.map(p => `<p>${escHtml(p)}</p>`).join("")}
+              </div>
+
+              <div class="sd-card">
+                <h2>${escHtml(d.listTitle)}</h2>
+                ${listHtml}
+              </div>
+
+              <div class="sd-info-grid">
+                ${d.blocks.map(b => `
+                  <div class="sd-info">
+                    <h3>${escHtml(b.title)}</h3>
+                    <p>${escHtml(b.text)}</p>
+                  </div>`).join("")}
+              </div>
+
+              <div class="sd-suitable">
+                <i class="fa-solid fa-bullseye"></i>
+                <div>
+                  <strong>Cocok untuk</strong>
+                  <p>${escHtml(d.suitable)}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="sd-cta">
+            <div class="container sd-cta-inner">
+              <div>
+                <h2>Butuh ${escHtml(d.title)}?</h2>
+                <p>Booking terlebih dahulu agar kebutuhan kendaraan Anda dapat dipersiapkan oleh tim OBENG.</p>
+              </div>
+              <a href="/paket-service#booking" class="btn btn-primary" data-route="/paket-service" data-target="booking"><i class="fa-brands fa-whatsapp"></i> Booking Sekarang</a>
+            </div>
+          </section>
+
+          <section class="sd-pager">
+            <div class="container sd-pager-inner">
+              <a href="/layanan-service/${prevSlug}" data-route="/layanan-service/${prevSlug}" class="sd-pager-link prev">
+                <span><i class="fa-solid fa-arrow-left"></i> Sebelumnya</span>
+                <strong>${escHtml(prev.title)}</strong>
+              </a>
+              <a href="/layanan-service/${nextSlug}" data-route="/layanan-service/${nextSlug}" class="sd-pager-link next">
+                <span>Berikutnya <i class="fa-solid fa-arrow-right"></i></span>
+                <strong>${escHtml(next.title)}</strong>
+              </a>
+            </div>
+          </section>
+        `;
+      }
+
+      const routes = {
+        "/": "page-tentang-kami",
+        "/tentang-kami": "page-tentang-kami",
+        "/layanan-service": "page-layanan-service",
+        "/paket-service": "page-paket-service",
+        "/lokasi": "page-lokasi"
+      };
+
+      // Daftarkan 8 route halaman detail layanan: /layanan-service/<slug>
+      serviceSlugs.forEach(slug => { routes["/layanan-service/" + slug] = "page-layanan-detail"; });
+
+      const pages = document.querySelectorAll(".page-view");
+      const navLinks = document.querySelectorAll(".main-nav .nav-link");
+      const siteHeader = document.getElementById("siteHeader");
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const mainNav = document.getElementById("mainNav");
+
+      function closeMenu(){
+        if(!mainNav||!hamburgerBtn) return;
+        mainNav.classList.remove("open");
+        hamburgerBtn.classList.remove("open");
+        hamburgerBtn.setAttribute("aria-expanded","false");
+      }
+
+      function getNormalizedRoute(pathOrHash) {
+        if (!pathOrHash) return "/tentang-kami";
+        let r = pathOrHash.replace(/^#\/?/, "/").trim();
+        if (r.startsWith("//")) r = r.substring(1);
+        if (!r.startsWith("/")) r = "/" + r;
+        r = r.split("#")[0].split("?")[0];
+        if (r === "/" || !routes[r]) return r === "/" ? "/tentang-kami" : r;
+        return r;
+      }
+
+      function navigateTo(targetRoute, targetId = null, pushHistory = true) {
+        const cleanRoute = getNormalizedRoute(targetRoute);
+        const activePageId = routes[cleanRoute] || "page-tentang-kami";
+
+        pages.forEach(p => {
+          if (p.id === activePageId) {
+            p.classList.add("active");
+          } else {
+            p.classList.remove("active");
+          }
+        });
+
+        // Isi halaman detail layanan (jika route-nya /layanan-service/<slug>)
+        if (activePageId === "page-layanan-detail") renderServiceDetail(cleanRoute);
+
+        // Update active nav-link
+        navLinks.forEach(link => {
+          const lRoute = link.getAttribute("data-route");
+          link.classList.toggle("active", lRoute === cleanRoute || (cleanRoute === "/tentang-kami" && lRoute === "/") || (cleanRoute.startsWith("/layanan-service/") && lRoute === "/layanan-service"));
+        });
+
+        // Trigger animasi reveal
+        initReveal();
+
+        // Update URL di browser tanpa reload (HTML5 History API)
+        if (pushHistory) {
+          try {
+            const newUrl = window.location.protocol === "file:" 
+              ? `#${cleanRoute}${targetId ? '#' + targetId : ''}` 
+              : `${cleanRoute}${targetId ? '#' + targetId : ''}`;
+            history.pushState({ route: cleanRoute, targetId: targetId }, "", newUrl);
+          } catch(e) {
+            window.location.hash = `#${cleanRoute}`;
+          }
+        }
+
+        // Scroll to target element jika ada, atau scroll ke paling atas
+        if (targetId) {
+          setTimeout(() => {
+            const el = document.getElementById(targetId);
+            if (el) {
+              window.scrollTo({
+                top: el.getBoundingClientRect().top + window.pageYOffset - (siteHeader ? siteHeader.offsetHeight : 70),
+                behavior: "smooth"
+              });
+            }
+          }, 60);
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        closeMenu();
+      }
+
+      // Handler klik untuk semua link internal navigasi
+      document.addEventListener("click", (e) => {
+        // FIX: jangan ikutkan .page-view (div pembungkus halaman juga punya data-route)
+        const link = e.target.closest("[data-route]:not(.page-view)");
+        if (!link) return;
+
+        const route = link.getAttribute("data-route");
+        const targetId = link.getAttribute("data-target") || (link.getAttribute("href") && link.getAttribute("href").includes("#") ? link.getAttribute("href").split("#")[1] : null);
+
+        if (route) {
+          e.preventDefault();
+          navigateTo(route, targetId, true);
+        }
+      });
+
+      // Handle tombol Back/Forward browser
+      window.addEventListener("popstate", (e) => {
+        // FIX: hanya proses popstate jika berasal dari navigasi ROUTE (punya state
+        // yang kita buat sendiri lewat history.pushState, atau hash-nya memang
+        // berupa pola route "#/xxx"). Popstate juga bisa terpicu oleh klik anchor
+        // biasa (href="#faq", href="#booking", dst) yang cuma scroll dalam 1
+        // halaman -- itu BUKAN pergantian route dan harus dibiarkan browser
+        // menangani sendiri (native anchor scroll), bukan di-reset ke halaman awal.
+        if (e.state && e.state.route) {
+          navigateTo(e.state.route, e.state.targetId || null, false);
+          return;
+        }
+        const rawHash = window.location.hash || "";
+        if (rawHash.startsWith("#/")) {
+          navigateTo(rawHash.replace("#", ""), null, false);
+        }
+        // Selain itu (hash biasa seperti #faq, #booking, atau tidak ada state):
+        // jangan panggil navigateTo sama sekali -- biarkan browser scroll native.
+      });
+
+      // Deteksi route awal saat pertama kali web dibuka
+      let initialPath = window.location.pathname;
+      if (window.location.hash && window.location.hash.startsWith("#/")) {
+        initialPath = window.location.hash.replace("#", "");
+      }
+      let initialTarget = null;
+      if (window.location.hash && !window.location.hash.startsWith("#/")) {
+        initialTarget = window.location.hash.replace("#", "");
+      }
+      navigateTo(initialPath, initialTarget, false);
+
+      // Header Scroll Effect
+      window.addEventListener("scroll", () => {
+        if(siteHeader) siteHeader.classList.toggle("scrolled", window.scrollY > 30);
+      });
+
+      // Hamburger Menu Toggle
+      if(hamburgerBtn && mainNav){
+        hamburgerBtn.addEventListener("click", () => {
+          const isOpen = mainNav.classList.toggle("open");
+          hamburgerBtn.classList.toggle("open", isOpen);
+          hamburgerBtn.setAttribute("aria-expanded", String(isOpen));
+        });
+      }
+
+      // Intersection Observer untuk reveal animation
+      function initReveal() {
+        const revObs = new IntersectionObserver((entries, obs) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in-view");
+              obs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.10 });
+        document.querySelectorAll(".page-view.active .reveal").forEach(el => revObs.observe(el));
+      }
+      initReveal();
+
+      // ============ BOOKING FORM ============
+      const bookingForm = document.getElementById("bookingForm");
+      const toast = document.getElementById("bookingToast");
+      const submitBtn = document.getElementById("btnSubmitBooking");
+      const dateInput = document.getElementById("fDate");
+      const sundayWarning = document.getElementById("sundayWarning");
+
+      if(dateInput){
+        dateInput.setAttribute("min", new Date().toISOString().split("T")[0]);
+        dateInput.addEventListener("change", () => {
+          if(dateInput.value && sundayWarning) sundayWarning.classList.remove("show");
+        });
+      }
+
+      const fields = [
+        {id: "fName", msg: "Nama lengkap wajib diisi"},
+        {id: "fPhone", msg: "Nomor WhatsApp wajib diisi"},
+        {id: "fVehicle", msg: "Tipe kendaraan wajib diisi"},
+        {id: "fService", msg: "Silakan pilih salah satu layanan"},
+        {id: "fDate", msg: "Tentukan rencana tanggal service"}
+      ];
+
+      function setFieldState(fid, err){
+        const el = document.getElementById(fid);
+        const errEl = document.getElementById(`err-${fid}`);
+        if(!el) return;
+        const p = el.closest(".form-row");
+        if(p) p.classList.toggle("has-error", Boolean(err));
+        if(errEl) errEl.textContent = err || "";
+      }
+
+      function isPhoneValid(v){ return v.replace(/\D/g,"").length >= 9; }
+
+      fields.forEach(({id}) => {
+        const el = document.getElementById(id);
+        if(el){
+          el.addEventListener("input", () => setFieldState(id, ""));
+          el.addEventListener("change", () => setFieldState(id, ""));
+        }
+      });
+
+      if(bookingForm){
+        bookingForm.addEventListener("submit", e => {
+          e.preventDefault();
+          let valid = true, first = null;
+          fields.forEach(({id, msg}) => {
+            const el = document.getElementById(id);
+            if(!el) return;
+            const val = el.value.trim();
+            if(!val){
+              setFieldState(id, msg); valid = false; if(!first) first = el;
+            } else if(id === "fPhone" && !isPhoneValid(val)){
+              setFieldState(id, "Nomor WhatsApp tidak valid (min. 9 digit)"); valid = false; if(!first) first = el;
+            } else {
+              setFieldState(id, "");
+            }
+          });
+          if(!valid){ if(first) first.focus(); return; }
+
+          const name = document.getElementById("fName").value.trim();
+          const phone = document.getElementById("fPhone").value.trim();
+          const vehicle = document.getElementById("fVehicle").value.trim();
+          const service = document.getElementById("fService").value;
+          const date = document.getElementById("fDate").value;
+          const complaint = document.getElementById("fComplaint").value.trim();
+          const fc = complaint ? `_"${complaint}"_` : `_Tidak ada catatan khusus (pengecekan/servis rutin)_`;
+
+          const msg = `Halo Admin *OBENG Kalimalang* \nSaya ingin reservasi jadwal service kendaraan melalui website. Berikut data lengkap saya:\n\n*DETAIL RESERVASI SERVICE*\n━━━━━━━━━━━━━━━━━━━━━━\nNama Pelanggan : ${name}\nNo. WhatsApp    : ${phone}\nUnit Kendaraan  : ${vehicle}\nPaket Layanan   : ${service}\nRencana Kedatangan : ${formatTanggalIndo(date)}\nKeluhan / Gejala Kendaraan :\n${fc}\n\nMohon konfirmasi ketersediaan antrean dan estimasi pengerjaannya ya. Terima kasih!`;
+          const url = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+
+          if(toast){
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 4000);
+          }
+          if(submitBtn){
+            const orig = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Menyiapkan WhatsApp...`;
+            setTimeout(() => { submitBtn.disabled = false; submitBtn.innerHTML = orig; }, 2500);
+          }
+          bookingForm.reset();
+          if(sundayWarning) sundayWarning.classList.remove("show");
+
+          if(/Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent)) {
+            window.location.href = url;
+          } else {
+            window.open(url, "_blank", "noopener,noreferrer");
+          }
+        });
+      }
+
+      // ============ GALERI SLIDER ============
+      const bSlides = document.getElementById("bookingSlides");
+      const bSlider = document.getElementById("bookingSlider");
+      const bPrev = document.getElementById("bookingPrev");
+      const bNext = document.getElementById("bookingNext");
+      const bDots = document.getElementById("bookingDots");
+
+      if(bSlides && bSlider && bPrev && bNext && bDots){
+        const items = Array.from(bSlides.children);
+        let idx = 0, tx = 0, tdx = 0;
+        bDots.innerHTML = "";
+        items.forEach((_, i) => {
+          const d = document.createElement("button");
+          d.type = "button";
+          d.className = "booking-slider-dot" + (i === 0 ? " active" : "");
+          d.setAttribute("aria-label", `Buka foto ${i + 1}`);
+          d.addEventListener("click", () => go(i));
+          bDots.appendChild(d);
+        });
+
+        function go(i){
+          idx = (i + items.length) % items.length;
+          bSlides.style.transform = `translateX(-${idx * 100}%)`;
+          bDots.querySelectorAll(".booking-slider-dot").forEach((d, j) => d.classList.toggle("active", j === idx));
+        }
+
+        bPrev.addEventListener("click", () => go(idx - 1));
+        bNext.addEventListener("click", () => go(idx + 1));
+        bSlider.addEventListener("touchstart", e => { tx = e.changedTouches[0].screenX; tdx = 0; }, {passive: true});
+        bSlider.addEventListener("touchmove", e => { tdx = e.changedTouches[0].screenX - tx; }, {passive: true});
+        bSlider.addEventListener("touchend", () => {
+          if(Math.abs(tdx) > 45) go(idx + (tdx < 0 ? 1 : -1));
+          tx = 0; tdx = 0;
+        }, {passive: true});
+
+        let auto = setInterval(() => go(idx + 1), 5000);
+        bSlider.addEventListener("mouseenter", () => clearInterval(auto));
+        bSlider.addEventListener("mouseleave", () => { auto = setInterval(() => go(idx + 1), 5000); });
+      }
+
+      // Scroll To Top
+      const scrollTopBtn = document.getElementById("scrollTopBtn");
+      if(scrollTopBtn){
+        window.addEventListener("scroll", () => scrollTopBtn.classList.toggle("show", window.scrollY > 400));
+        scrollTopBtn.addEventListener("click", () => window.scrollTo({top: 0, behavior: "smooth"}));
+      }
+
+      // ============ FIX FAQ ACCORDION (SUMMARY DI-DISPLAY:FLEX BIKIN SAFARI/iOS
+      // TIDAK MENGENALI KLIK NATIVE UNTUK TOGGLE <details>) ============
+      // Di Safari & sebagian browser WebKit/mobile, meng-override "display" pada
+      // <summary> (di sini pakai display:flex untuk layout ikon panah) membuat
+      // perilaku toggle bawaan browser gagal terpicu. Solusinya: tangani toggle
+      // secara manual lewat JS, dan matikan perilaku native supaya tidak dobel.
+      document.querySelectorAll(".faq-question").forEach(summary => {
+        summary.addEventListener("click", (e) => {
+          e.preventDefault();
+          const item = summary.closest(".faq-item");
+          if (!item) return;
+          const isOpen = item.hasAttribute("open");
+          // Opsional: tutup FAQ lain yang sedang terbuka (accordion style)
+          document.querySelectorAll(".faq-item[open]").forEach(other => {
+            if (other !== item) other.removeAttribute("open");
+          });
+          if (isOpen) {
+            item.removeAttribute("open");
+          } else {
+            item.setAttribute("open", "");
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
