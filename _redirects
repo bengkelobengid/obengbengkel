@@ -1,0 +1,20 @@
+# ============================================================
+# Konsolidasi duplikat.
+# Router menormalisasi route "/" menjadi "/tentang-kami", sehingga kedua URL
+# menampilkan halaman Beranda yang identik. Tanpa 301 ini Google melihat dua
+# URL dengan konten sama (duplicate content).
+#
+# WAJIB berada DI ATAS aturan splat /* — Cloudflare & Netlify memakai aturan
+# PERTAMA yang cocok; kalau ditaruh di bawah splat, aturan ini tidak pernah
+# tereksekusi. Ini menyamakan perilaku dengan blok "redirects" di vercel.json.
+# ============================================================
+/tentang-kami    /    301!
+
+# SPA catch-all — WAJIB untuk router custom di web obeng.html
+# Semua route (/tentang-kami, /paket-service, /layanan-service/service-ac, dst)
+# harus dilayani oleh shell HTML yang sama, karena routing dilakukan client-side
+# lewat History API. Tanpa baris ini, refresh di route mana pun = HTTP 404.
+#
+# File statis yang benar-benar ada (gambar, sitemap.xml, robots.txt) tetap
+# dilayani lebih dulu oleh Pages, jadi aturan ini tidak menimpa aset.
+/*    /index.html    200

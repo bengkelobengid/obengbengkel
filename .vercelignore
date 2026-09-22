@@ -1,0 +1,10 @@
+# Jangan ikut ter-deploy ke production.
+# webobengg.zip = arsip sumber 19 MB. Kalau ikut ter-upload, file ini bisa
+# diunduh publik lewat https://obeng.id/webobengg.zip dan memperbesar bundle.
+webobengg.zip
+*.zip
+
+# Artefak lokal
+.DS_Store
+Thumbs.db
+*.bak

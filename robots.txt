@@ -1,0 +1,21 @@
+# robots.txt — OBENG (Orang Bengkel Indonesia)
+# PT. Fortis Fortuna Indo — https://bengkelobeng.id
+
+# CATATAN TEKNIS:
+# Jangan membuat grup "User-agent: Googlebot" terpisah di file ini.
+# Googlebot hanya mematuhi SATU grup yang paling spesifik untuknya; begitu grup
+# Googlebot dibuat, seluruh aturan di grup "*" akan diabaikan olehnya.
+# Satu grup "*" sudah cukup dan berlaku untuk semua crawler.
+
+User-agent: *
+Allow: /
+
+# Situs ini dirender lewat JavaScript. CSS, JS, dan gambar WAJIB bisa di-crawl,
+# kalau tidak, proses render Google gagal dan halaman dianggap kosong.
+# Jangan pernah menambahkan Disallow untuk aset di bawah ini.
+
+# Arsip sumber tidak perlu diindeks (file ini juga sudah dikecualikan
+# dari deployment lewat .vercelignore).
+Disallow: /*.zip$
+
+Sitemap: https://bengkelobeng.id/sitemap.xml

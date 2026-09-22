@@ -1,0 +1,12 @@
+# Arsip sumber 19 MB — jangan di-commit / di-deploy.
+# Kalau ikut ter-push, Cloudflare Pages & Netlify akan meng-upload-nya dan
+# file bisa diunduh publik di https://obeng.id/webobengg.zip
+*.zip
+webobengg.zip
+
+# Artefak lokal
+.DS_Store
+Thumbs.db
+*.bak
+node_modules/
+.vercel/

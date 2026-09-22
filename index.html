@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!-- Base URL: WAJIB. Router SPA memakai History API, sehingga pada route
+       bertingkat (/layanan-service/service-ac) seluruh path gambar relatif
+       akan resolve ke /layanan-service/... dan menghasilkan 404.
+       Tag ini mengunci resolusi aset ke root domain tanpa mengubah markup. -->
+  <base href="/">
   <title>OBENG — Orang Bengkel Indonesia | PT. Fortis Fortuna Indo</title>
   
   <meta name="description" content="OBENG (Orang Bengkel Indonesia) by PT. Fortis Fortuna Indo — Bengkel perawatan & perbaikan mobil dan motor profesional di Kalimalang, Bekasi. Cepat, Sigap, Beres.">
@@ -12,7 +18,76 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="OBENG — Solusi Perawatan & Perbaikan Kendaraan Anda">
   <meta property="og:description" content="Mekanik profesional, peralatan modern, dan estimasi transparan. Booking service langsung via WhatsApp.">
-  <meta property="og:image" content="Foto Mobil.jpg">
+  <meta property="og:image" content="https://bengkelobeng.id/Foto%20Mobil.png">
+  <meta property="og:image:width" content="1672">
+  <meta property="og:image:height" content="941">
+  <meta property="og:image:alt" content="Bengkel OBENG Kalimalang Bekasi — perawatan dan perbaikan mobil">
+  <meta property="og:url" content="https://bengkelobeng.id/">
+  <meta property="og:site_name" content="OBENG — Orang Bengkel Indonesia">
+  <meta property="og:locale" content="id_ID">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OBENG — Solusi Perawatan & Perbaikan Kendaraan Anda">
+  <meta name="twitter:description" content="Mekanik profesional, peralatan modern, dan estimasi transparan. Booking service langsung via WhatsApp.">
+  <meta name="twitter:image" content="https://bengkelobeng.id/Foto%20Mobil.png">
+
+  <link rel="canonical" href="https://bengkelobeng.id/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="author" content="PT. Fortis Fortuna Indo">
+
+  <link rel="icon" href="/Logo%20OBENG.jpeg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="/Logo%20OBENG.jpeg">
+
+  <meta name="geo.region" content="ID-JB">
+  <meta name="geo.placename" content="Bintara Jaya, Bekasi Barat">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "@id": "https://bengkelobeng.id/#bengkel",
+    "name": "OBENG — Orang Bengkel Indonesia",
+    "legalName": "PT. Fortis Fortuna Indo",
+    "description": "Bengkel perawatan dan perbaikan mobil serta motor di Kalimalang, Bekasi Barat. Melayani service berkala, ganti oli, tune up, perbaikan kaki-kaki, rem, service AC, dan diagnosa kendaraan.",
+    "url": "https://bengkelobeng.id/",
+    "image": "https://bengkelobeng.id/Foto%20Mobil.png",
+    "logo": "https://bengkelobeng.id/Logo%20OBENG.jpeg",
+    "telephone": "+6285691211110",
+    "priceRange": "Rp",
+    "currenciesAccepted": "IDR",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jl. Raya Kalimalang, Bintara Jaya",
+      "addressLocality": "Bekasi Barat",
+      "addressRegion": "Jawa Barat",
+      "addressCountry": "ID"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Bekasi" },
+      { "@type": "City", "name": "Jakarta Timur" }
+    ],
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    }],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Layanan Service OBENG",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Service Berkala",        "url": "https://bengkelobeng.id/layanan-service/service-berkala" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Perbaikan Kaki-Kaki",    "url": "https://bengkelobeng.id/layanan-service/perbaikan-kaki-kaki" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Service AC",             "url": "https://bengkelobeng.id/layanan-service/service-ac" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ganti Oli & Filter",     "url": "https://bengkelobeng.id/layanan-service/ganti-oli-filter" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Perbaikan Rem",          "url": "https://bengkelobeng.id/layanan-service/perbaikan-rem" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pemeriksaan Mesin",      "url": "https://bengkelobeng.id/layanan-service/pemeriksaan-mesin" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tune Up Mesin",          "url": "https://bengkelobeng.id/layanan-service/tune-up-mesin" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diagnosa Kendaraan",     "url": "https://bengkelobeng.id/layanan-service/diagnosa-kendaraan" } }
+      ]
+    }
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -363,7 +438,7 @@
     .service-card {
       background: var(--bg-card); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 22px 20px;
-      display: flex; flex-direction: column; gap: 12px;
+      display: flex; flex-direction: column; gap: 8px;
       box-shadow: var(--shadow-card); transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       overflow: hidden;
     }
@@ -904,7 +979,7 @@
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <a href="/tentang-kami" class="brand" data-route="/tentang-kami" aria-label="OBENG Beranda">
-        <img src="foto remove.png" alt="Logo OBENG — PT. Fortis Fortuna Indo" class="brand-logo-img">
+        <img src="Logo OBENG.jpeg" alt="Logo OBENG — PT. Fortis Fortuna Indo" class="brand-logo-img">
       </a>
 
       <nav class="main-nav" id="mainNav" aria-label="Navigasi Utama">
@@ -927,7 +1002,7 @@
     <!-- ==========================================================================
          HALAMAN 1: TENTANG KAMI (/ & /tentang-kami)
          ========================================================================== -->
-    <div class="page-view" id="page-tentang-kami" data-route="/tentang-kami">
+    <div class="page-view active" id="page-tentang-kami" data-route="/tentang-kami">
       
       <!-- HERO (JUDUL AWAL WEB OBENG) -->
       <section class="hero" id="beranda">
@@ -1104,64 +1179,56 @@
 
           <div class="services-grid">
             <article class="service-card reveal" data-route="/layanan-service/service-berkala">
-              <img src="Foto service berkala.png" alt="Service Berkala" class="service-image">
-              <div class="service-icon"><i class="fa-solid fa-calendar-check"></i></div>
+              <img src="Foto Servce Berkala.png" alt="Service Berkala" class="service-image">
               <h3>Service Berkala</h3>
               <p>Perawatan berkala terjadwal untuk menjaga performa mesin, efisiensi bahan bakar, dan kenyamanan berkendara harian.</p>
               <a href="/layanan-service/service-berkala" class="detail-btn" data-route="/layanan-service/service-berkala">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
             </article>
 
             <article class="service-card reveal" data-route="/layanan-service/perbaikan-kaki-kaki">
-              <img src="Foto perbaikan kaki kaki.png" alt="Perbaikan Kaki-Kaki" class="service-image">
-              <div class="service-icon"><i class="fa-solid fa-car-side"></i></div>
+              <img src="Foto Perbaikan Kaki kaki mobil.png" alt="Perbaikan Kaki-Kaki" class="service-image">
               <h3>Perbaikan Kaki-Kaki</h3>
               <p>Mengatasi bunyi glodakan, getaran setir, dan ketidakstabilan suspensi (tie rod, ball joint, shockbreaker).</p>
               <a href="/layanan-service/perbaikan-kaki-kaki" class="detail-btn" data-route="/layanan-service/perbaikan-kaki-kaki">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
             </article>
 
             <article class="service-card reveal" data-route="/layanan-service/service-ac">
-              <img src="Foto service AC.png" alt="Service AC" class="service-image">
-              <div class="service-icon"><i class="fa-solid fa-snowflake"></i></div>
+              <img src="Foto Service AC Mobil.png" alt="Service AC" class="service-image">
               <h3>Service AC</h3>
               <p>Pembersihan evaporator, pengecekan tekanan freon, kompresor, dan sterilisasi kabin agar kembali dingin maksimal.</p>
               <a href="/layanan-service/service-ac" class="detail-btn" data-route="/layanan-service/service-ac">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
             </article>
 
             <article class="service-card reveal" data-route="/layanan-service/ganti-oli-filter">
-              <img src="Foto ganti Oli.png" alt="Ganti Oli &amp; Filter" class="service-image">
-              <div class="service-icon"><i class="fa-solid fa-oil-can"></i></div>
+              <img src="Foto Ganti Oli dan Filter.png" alt="Ganti Oli &amp; Filter" class="service-image">
               <h3>Ganti Oli &amp; Filter</h3>
               <p>Pilihan oli original (mineral, semi, full-synthetic) dan filter berkualitas tinggi sesuai spesifikasi pabrikan.</p>
               <a href="/layanan-service/ganti-oli-filter" class="detail-btn" data-route="/layanan-service/ganti-oli-filter">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
             </article>
 
             <article class="service-card reveal" data-route="/layanan-service/perbaikan-rem">
-              <img src="Foto perbaikan rem.png" alt="Perbaikan Rem" class="service-image">
-              <div class="service-icon"><i class="fa-solid fa-compact-disc"></i></div>
+              <img src="Foto Perbaikin Rem.png" alt="Perbaikan Rem" class="service-image">
               <h3>Perbaikan Rem</h3>
               <p>Penggantian kampas rem, bleeding minyak rem, dan perbaikan piringan cakram demi keamanan pengereman.</p>
               <a href="/layanan-service/perbaikan-rem" class="detail-btn" data-route="/layanan-service/perbaikan-rem">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
             </article>
 
             <article class="service-card reveal" data-route="/layanan-service/pemeriksaan-mesin">
-              <img src="Foto pemeriksaan .png" alt="Pemeriksaan Mesin" class="service-image">
-              <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
+              <img src="Foto Pemeriksaan Mesin.png" alt="Pemeriksaan Mesin" class="service-image">
               <h3>Pemeriksaan Mesin</h3>
               <p>Deteksi dini rembesan oli, overheat, suara mesin abnormal, serta pengecekan kompresi dan radiator.</p>
               <a href="/layanan-service/pemeriksaan-mesin" class="detail-btn" data-route="/layanan-service/pemeriksaan-mesin">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
             </article>
 
             <article class="service-card reveal" data-route="/layanan-service/tune-up-mesin">
-              <img src="Foto tune up.png" alt="Tune Up Mesin" class="service-image">
-              <div class="service-icon"><i class="fa-solid fa-sliders"></i></div>
+              <img src="Foto Tune Up Mesin.png" alt="Tune Up Mesin" class="service-image">
               <h3>Tune Up Mesin</h3>
               <p>Pembersihan throttle body, busi, injector, dan ruang bakar agar tarikan lebih enteng serta bertenaga.</p>
               <a href="/layanan-service/tune-up-mesin" class="detail-btn" data-route="/layanan-service/tune-up-mesin">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
             </article>
 
             <article class="service-card reveal" data-route="/layanan-service/diagnosa-kendaraan">
-              <img src="Foto diagnosis kendaraan.png" alt="Diagnosa Kendaraan" class="service-image">
-              <div class="service-icon"><i class="fa-solid fa-laptop-medical"></i></div>
+              <img src="Foto Diagnosa.png" alt="Diagnosa Kendaraan" class="service-image">
               <h3>Diagnosa Kendaraan</h3>
               <p>Pemeriksaan menyeluruh menggunakan scanner untuk membaca kondisi sistem elektronik kendaraan secara akurat.</p>
               <a href="/layanan-service/diagnosa-kendaraan" class="detail-btn" data-route="/layanan-service/diagnosa-kendaraan">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
@@ -1518,7 +1585,7 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <a href="/tentang-kami" class="brand" data-route="/tentang-kami" aria-label="OBENG Beranda">
-          <img src="foto remove.png" alt="Logo OBENG — PT. Fortis Fortuna Indo" class="footer-logo-img">
+          <img src="Logo OBENG.jpeg" alt="Logo OBENG — PT. Fortis Fortuna Indo" class="footer-logo-img">
         </a>
         <p>Bengkel kendaraan terpercaya dari <strong>PT. Fortis Fortuna Indo</strong>. Hadir dengan mekanik profesional, peralatan modern, dan standar kerja Cepat, Sigap, Beres.</p>
         <div class="footer-social">
@@ -1621,7 +1688,7 @@
   "service-berkala": {
     "key": "berkala",
     "icon": "fa-calendar-check",
-    "img": "Foto service berkala.png",
+    "img": "Foto Servce Berkala.png",
     "title": "Service Berkala",
     "tagline": "Perawatan Rutin untuk Menjaga Kendaraan Tetap Prima",
     "intro": [
@@ -1650,7 +1717,7 @@
   "perbaikan-kaki-kaki": {
     "key": "kaki-kaki",
     "icon": "fa-car-side",
-    "img": "Foto perbaikan kaki kaki.png",
+    "img": "Foto Perbaikan Kaki kaki mobil.png",
     "title": "Perbaikan Kaki-Kaki",
     "tagline": "Mengembalikan Kenyamanan dan Kestabilan Kendaraan",
     "intro": [
@@ -1683,7 +1750,7 @@
   "service-ac": {
     "key": "ac",
     "icon": "fa-snowflake",
-    "img": "Foto service AC.png",
+    "img": "Foto Service AC Mobil.png",
     "title": "Service AC",
     "tagline": "Menjaga Kabin Tetap Dingin dan Nyaman",
     "intro": [
@@ -1716,7 +1783,7 @@
   "ganti-oli-filter": {
     "key": "oli",
     "icon": "fa-oil-can",
-    "img": "Foto ganti Oli.png",
+    "img": "Foto Ganti Oli dan Filter.png",
     "title": "Ganti Oli & Filter",
     "tagline": "Perawatan Dasar yang Penting untuk Menjaga Mesin",
     "intro": [
@@ -1748,7 +1815,7 @@
   "perbaikan-rem": {
     "key": "rem",
     "icon": "fa-compact-disc",
-    "img": "Foto perbaikan rem.png",
+    "img": "Foto Perbaikin Rem.png",
     "title": "Perbaikan Rem",
     "tagline": "Menjaga Sistem Pengereman Tetap Responsif",
     "intro": [
@@ -1780,7 +1847,7 @@
   "pemeriksaan-mesin": {
     "key": "mesin",
     "icon": "fa-gears",
-    "img": "Foto pemeriksaan .png",
+    "img": "Foto Pemeriksaan Mesin.png",
     "title": "Pemeriksaan Mesin",
     "tagline": "Mengetahui Kondisi Mesin Secara Lebih Menyeluruh",
     "intro": [
@@ -1813,7 +1880,7 @@
   "tune-up-mesin": {
     "key": "tuneup",
     "icon": "fa-sliders",
-    "img": "Foto tune up.png",
+    "img": "Foto Tune Up Mesin.png",
     "title": "Tune Up Mesin",
     "tagline": "Mengoptimalkan Kembali Performa Mesin",
     "intro": [
@@ -1845,7 +1912,7 @@
   "diagnosa-kendaraan": {
     "key": "diagnosa",
     "icon": "fa-laptop-medical",
-    "img": "Foto diagnosis kendaraan.png",
+    "img": "Foto Diagnosa.png",
     "title": "Diagnosa Kendaraan",
     "tagline": "Menemukan Sumber Masalah dengan Teknologi Diagnostik",
     "intro": [
@@ -1904,7 +1971,6 @@
                   <i class="fa-solid fa-chevron-right"></i>
                   <span>${escHtml(d.title)}</span>
                 </nav>
-                <div class="sd-icon"><i class="fa-solid ${d.icon}"></i></div>
                 <h1>${escHtml(d.title)}</h1>
                 <p class="sd-tagline">${escHtml(d.tagline)}</p>
                 <div class="sd-hero-actions">
@@ -1983,6 +2049,96 @@
       // Daftarkan 8 route halaman detail layanan: /layanan-service/<slug>
       serviceSlugs.forEach(slug => { routes["/layanan-service/" + slug] = "page-layanan-detail"; });
 
+      /* ==========================================================================
+         SEO META PER-ROUTE
+         Router ini mengganti halaman tanpa reload, sehingga <title>, meta
+         description, dan <link rel="canonical"> TIDAK ikut berubah. Akibatnya
+         ke-13 route mengirim canonical yang sama (https://bengkelobeng.id/) dan Google
+         menggabungkan seluruh halaman layanan ke beranda — semua URL di
+         sitemap.xml selain "/" tidak akan terindeks.
+
+         Blok di bawah menyinkronkan metadata <head> dengan route aktif.
+         Hanya menyentuh tag di dalam <head>; tidak ada konten, layout, atau
+         logika halaman yang diubah.
+         ========================================================================== */
+      const SITE_ORIGIN = "https://bengkelobeng.id";
+      const DEFAULT_OG_IMAGE = "Foto Mobil.png";
+
+      const routeMeta = {
+        "/tentang-kami": {
+          path: "/",
+          title: "OBENG — Orang Bengkel Indonesia | PT. Fortis Fortuna Indo",
+          desc: "OBENG (Orang Bengkel Indonesia) by PT. Fortis Fortuna Indo — Bengkel perawatan & perbaikan mobil dan motor profesional di Kalimalang, Bekasi. Cepat, Sigap, Beres."
+        },
+        "/layanan-service": {
+          path: "/layanan-service",
+          title: "Layanan Service Mobil & Motor — OBENG Kalimalang Bekasi",
+          desc: "Layanan OBENG: service berkala, ganti oli & filter, tune up, perbaikan kaki-kaki, rem, service AC, diagnosa, dan home service di Kalimalang, Bekasi."
+        },
+        "/paket-service": {
+          path: "/paket-service",
+          title: "Paket Service & Booking — OBENG Kalimalang Bekasi",
+          desc: "Pilihan paket service OBENG dengan estimasi biaya transparan. Booking slot service mobil dan motor langsung lewat WhatsApp, Kalimalang, Bekasi Barat."
+        },
+        "/lokasi": {
+          path: "/lokasi",
+          title: "Lokasi & Jam Buka Bengkel — OBENG Kalimalang Bekasi",
+          desc: "Alamat bengkel OBENG di Jl. Raya Kalimalang, Bintara Jaya, Bekasi Barat. Buka 08.00–20.00 setiap hari. Lihat testimoni pelanggan dan FAQ seputar service."
+        }
+      };
+      // "/" dinormalisasi router menjadi "/tentang-kami"; didaftarkan juga
+      // sebagai pengaman kalau navigateTo("/") dipanggil langsung.
+      routeMeta["/"] = routeMeta["/tentang-kami"];
+
+      // Potong deskripsi di batas kata, bukan di tengah kata (maks ~155 karakter
+      // agar tidak terpotong "..." di hasil pencarian Google).
+      function trimDesc(text, max) {
+        if (!text) return "";
+        const t = text.replace(/\s+/g, " ").trim();
+        if (t.length <= max) return t;
+        const cut = t.slice(0, max);
+        return cut.slice(0, cut.lastIndexOf(" ")).replace(/[.,;:\-]$/, "") + "…";
+      }
+
+      function setHeadTag(selector, attr, value) {
+        const el = document.head.querySelector(selector);
+        if (el && value) el.setAttribute(attr, value);
+      }
+
+      function updateSeoMeta(cleanRoute) {
+        let meta = routeMeta[cleanRoute];
+        let ogImage = DEFAULT_OG_IMAGE;
+
+        // Halaman detail layanan: judul & deskripsi diambil dari data yang sudah
+        // ada di serviceDetails, jadi tidak ada teks baru yang dikarang.
+        if (!meta && cleanRoute.indexOf("/layanan-service/") === 0) {
+          const d = serviceDetails[cleanRoute.split("/")[2]];
+          if (d) {
+            meta = {
+              path: cleanRoute,
+              title: d.title + " — OBENG Kalimalang Bekasi",
+              desc: trimDesc((d.tagline ? d.tagline + ". " : "") + (d.intro && d.intro[0] ? d.intro[0] : ""), 155)
+            };
+            if (d.img) ogImage = d.img;
+          }
+        }
+        if (!meta) meta = routeMeta["/tentang-kami"];
+
+        const url = SITE_ORIGIN + meta.path;
+        const imgUrl = SITE_ORIGIN + "/" + encodeURI(ogImage);
+
+        document.title = meta.title;
+        setHeadTag('link[rel="canonical"]', "href", url);
+        setHeadTag('meta[name="description"]', "content", meta.desc);
+        setHeadTag('meta[property="og:title"]', "content", meta.title);
+        setHeadTag('meta[property="og:description"]', "content", meta.desc);
+        setHeadTag('meta[property="og:url"]', "content", url);
+        setHeadTag('meta[property="og:image"]', "content", imgUrl);
+        setHeadTag('meta[name="twitter:title"]', "content", meta.title);
+        setHeadTag('meta[name="twitter:description"]', "content", meta.desc);
+        setHeadTag('meta[name="twitter:image"]', "content", imgUrl);
+      }
+
       const pages = document.querySelectorAll(".page-view");
       const navLinks = document.querySelectorAll(".main-nav .nav-link");
       const siteHeader = document.getElementById("siteHeader");
@@ -2020,6 +2176,10 @@
 
         // Isi halaman detail layanan (jika route-nya /layanan-service/<slug>)
         if (activePageId === "page-layanan-detail") renderServiceDetail(cleanRoute);
+
+        // Sinkronkan <title>, description, dan canonical dengan route aktif.
+        // Dipanggil SETELAH renderServiceDetail agar data detail sudah siap.
+        updateSeoMeta(cleanRoute);
 
         // Update active nav-link
         navLinks.forEach(link => {

@@ -1,0 +1,36 @@
+# ============================================================
+# Security headers — berlaku untuk semua path
+# ============================================================
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# ============================================================
+# HTML shell — jangan di-cache lama.
+# Seluruh isi situs ada di file ini, jadi update konten harus
+# langsung terlihat tanpa nunggu cache browser kedaluwarsa.
+# ============================================================
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# ============================================================
+# Gambar — immutable, cache 1 tahun.
+# Nama file tidak mengandung hash, tapi foto bengkel praktis
+# tidak pernah berubah. Kalau nanti ada foto diganti, ganti juga
+# nama filenya supaya cache ikut ter-invalidate.
+# ============================================================
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+/*.jpeg
+  Cache-Control: public, max-age=31536000, immutable
+
+# ============================================================
+# File SEO — cache pendek supaya perubahan cepat terbaca crawler
+# ============================================================
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+/robots.txt
+  Cache-Control: public, max-age=3600
